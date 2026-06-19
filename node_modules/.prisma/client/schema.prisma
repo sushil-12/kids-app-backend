@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Story {
+  id        String   @id @default(cuid())
+  ageBand   String
+  title     String
+  body      String   @db.Text
+  moral     String
+  emoji     String
+  source    String
+  date      String?
+  usedCount Int      @default(0)
+  createdAt DateTime @default(now())
+
+  @@map("stories")
+}
+
+model Poem {
+  id        String   @id @default(cuid())
+  topic     String
+  title     String
+  lines     String   @db.Text
+  emoji     String
+  source    String
+  usedCount Int      @default(0)
+  createdAt DateTime @default(now())
+
+  @@map("poems")
+}
+
+model AbcLesson {
+  id        String   @id @default(cuid())
+  letter    String   @unique
+  word      String
+  emoji     String
+  phonics   String
+  miniStory String   @db.Text
+  source    String
+  updatedAt DateTime @updatedAt
+
+  @@map("abc_lessons")
+}
+
+model CrawlSource {
+  id          String    @id @default(cuid())
+  url         String    @unique
+  contentType String
+  lastCrawled DateTime?
+  status      String    @default("pending")
+
+  @@map("crawl_sources")
+}

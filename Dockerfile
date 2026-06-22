@@ -24,13 +24,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends openssl && rm -
 RUN groupadd -g 1001 nodejs && \
     useradd -u 1001 -g nodejs -m brightmind
 
-COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/prisma ./prisma
-COPY package*.json ./
+COPY --from=builder --chown=brightmind:nodejs /app/dist ./dist
+COPY --from=builder --chown=brightmind:nodejs /app/node_modules ./node_modules
+COPY --from=builder --chown=brightmind:nodejs /app/prisma ./prisma
+COPY --chown=brightmind:nodejs package*.json ./
 
 USER brightmind
 
 EXPOSE 3000
 
-CMD ["node", "dist/index.js"]
+CMD ["sh", "-c", "npx prisma migrate deploy && node dist/index.js"]

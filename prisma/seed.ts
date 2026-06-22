@@ -138,14 +138,24 @@ async function main(): Promise<void> {
   }
 
   // Crawl sources
+  // All seeds are trusted *index roots* (mode: 'index'): the crawler discovers
+  // the individual article links on each and crawls those as pages. Operators
+  // add a root once — they never paste individual article URLs.
   await prisma.crawlSource.createMany({
     skipDuplicates: true,
     data: [
-      { url: 'https://www.storyberries.com/category/bedtime-stories/', contentType: 'story', status: 'pending' },
-      { url: 'https://www.kidsgen.com/poems/', contentType: 'poem', status: 'pending' },
-      { url: 'https://www.starfall.com/h/abcs/', contentType: 'abc', status: 'pending' },
-      { url: 'https://www.pitara.com/fiction-for-kids/stories-for-kids/', contentType: 'story', status: 'pending' },
-      { url: 'https://www.poetry4kids.com/', contentType: 'poem', status: 'pending' },
+      { url: 'https://www.storyberries.com/category/bedtime-stories/', contentType: 'story', mode: 'index', status: 'pending' },
+      { url: 'https://www.kidsgen.com/poems/', contentType: 'poem', mode: 'index', status: 'pending' },
+      { url: 'https://www.starfall.com/h/abcs/', contentType: 'abc', mode: 'index', status: 'pending' },
+      { url: 'https://www.pitara.com/fiction-for-kids/stories-for-kids/', contentType: 'story', mode: 'index', status: 'pending' },
+      { url: 'https://www.poetry4kids.com/', contentType: 'poem', mode: 'index', status: 'pending' },
+      // Additional kid-safe sources (crawl-first policy). NOTE: vet reuse rights
+      // per source before production — see the compliance note in the plan.
+      { url: 'https://freekidsbooks.org/category/ages-3-5-years/', contentType: 'story', mode: 'index', status: 'pending' },
+      { url: 'https://www.storynory.com/category/fairy-tales/', contentType: 'story', mode: 'index', status: 'pending' },
+      { url: 'https://americanliterature.com/childrens-stories', contentType: 'story', mode: 'index', status: 'pending' },
+      { url: 'https://www.familyfriendpoems.com/poems/children/', contentType: 'poem', mode: 'index', status: 'pending' },
+      { url: 'https://www.dltk-teach.com/alphabuddies/', contentType: 'abc', mode: 'index', status: 'pending' },
     ],
   });
 

@@ -5,6 +5,7 @@ import {
   incrementStoryUsedCount,
   getContentCounts,
   createCrawlSource,
+  getAllCrawlSources,
   prisma,
 } from '../../db/content.repo';
 import { generateQueue, crawlQueue } from '../../jobs/queue';
@@ -31,20 +32,22 @@ export const storiesRoute: FastifyPluginAsync = async (fastify) => {
       }
 
       const today = getTodayString();
-      const cacheKey = `story:${ageBand}:${today}`;
+      // const cacheKey = `story:${ageBand}:${today}`;
 
-      // 1. Redis cache
-      const cached = await fastify.redis.get(cacheKey);
-      if (cached) {
-        return reply.send(JSON.parse(cached) as unknown);
-      }
+      // 1. Redis cache — disabled for now so every request returns a fresh,
+      // randomized story. Re-enable (here + the setex below) to restore the
+      // "one fixed story per day" daily-cache behavior.
+      // const cached = await fastify.redis.get(cacheKey);
+      // if (cached) {
+      //   return reply.send(JSON.parse(cached) as unknown);
+      // }
 
       // 2. DB lookup
       const story = await getStoryForToday(ageBand, today);
 
       if (story) {
         await incrementStoryUsedCount(story.id);
-        const ttl = getSecondsUntilMidnight();
+        // const ttl = getSecondsUntilMidnight();
         const responseBody = {
           id: story.id,
           title: story.title,
@@ -54,7 +57,7 @@ export const storiesRoute: FastifyPluginAsync = async (fastify) => {
           source: story.source,
           generatedAt: story.createdAt,
         };
-        await fastify.redis.setex(cacheKey, ttl, JSON.stringify(responseBody));
+        // await fastify.redis.setex(cacheKey, ttl, JSON.stringify(responseBody));
         return reply.send(responseBody);
       }
 
@@ -96,20 +99,44 @@ export const storiesRoute: FastifyPluginAsync = async (fastify) => {
     });
   });
 
-  // Admin crawl trigger route
-  fastify.post<{ Body: { url: string; contentType: string } }>(
+  // Admin crawl trigger route. `mode` defaults to "index" so a pasted listing
+  // page auto-discovers its article links; pass "page" to crawl a single article.
+  fastify.post<{ Body: { url: string; contentType: string; mode?: string } }>(
     '/crawl/trigger',
     { preHandler: [fastify.authenticateAdmin] },
     async (request, reply) => {
       const { url, contentType } = request.body;
+      const mode = request.body.mode === 'page' ? 'page' : 'index';
       if (!url || !['story', 'poem', 'abc'].includes(contentType)) {
         return reply.code(400).send({ error: 'Invalid url or contentType' });
       }
 
-      const source = await createCrawlSource({ url, contentType, status: 'pending' });
-      const job = await crawlQueue.add('crawl', { sourceId: source.id, url, contentType });
+      const source = await createCrawlSource({
+        url,
+        contentType,
+        mode,
+        status: 'pending',
+        discoveredFrom: null,
+      });
+      const job = await crawlQueue.add('crawl', { sourceId: source.id, url, contentType, mode });
 
       return reply.code(202).send({ jobId: job.id });
     }
   );
+
+  // Admin crawl-sources listing — powers the in-app admin panel's status view.
+  fastify.get('/crawl/sources', { preHandler: [fastify.authenticateAdmin] }, async (request, reply) => {
+    const sources = await getAllCrawlSources();
+    return reply.send(
+      sources.map((s) => ({
+        id: s.id,
+        url: s.url,
+        contentType: s.contentType,
+        mode: s.mode,
+        status: s.status,
+        lastCrawled: s.lastCrawled,
+        discoveredFrom: s.discoveredFrom,
+      }))
+    );
+  });
 };

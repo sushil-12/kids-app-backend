@@ -20,7 +20,7 @@ export class ContentService {
     const system = 'You are a warm children\'s storyteller. Output ONLY valid JSON.';
     const user = `Story for ${ageBand} kids (date: ${date}). JSON: {title, story: "6-8 sentences", moral: "1 sentence", emoji}`;
 
-    const raw = await this.openai.complete(system, user);
+    const raw = await this.openai.complete(system, user, 350);
     const parsed = JSON.parse(raw) as { title: string; story: string; moral: string; emoji: string };
 
     return createStory({
@@ -38,7 +38,7 @@ export class ContentService {
     const system = 'Children\'s poet for ages 5-6. Output ONLY valid JSON.';
     const user = `4-line rhyming poem about '${topic}'. JSON: {title, poem: "lines joined by \\n", emoji}`;
 
-    const raw = await this.openai.complete(system, user);
+    const raw = await this.openai.complete(system, user, 140);
     const parsed = JSON.parse(raw) as { title: string; poem: string; emoji: string };
 
     return createPoem({
@@ -55,7 +55,7 @@ export class ContentService {
     const system = 'Children\'s phonics teacher. Output ONLY valid JSON.';
     const user = `ABC lesson for '${upperLetter}'. JSON: {letter, word, emoji, phonics: "short tip", miniStory: "2-3 sentences"}`;
 
-    const raw = await this.openai.complete(system, user);
+    const raw = await this.openai.complete(system, user, 160);
     const parsed = JSON.parse(raw) as {
       letter: string;
       word: string;

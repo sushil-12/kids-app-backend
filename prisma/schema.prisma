@@ -52,8 +52,13 @@ model CrawlSource {
   id          String    @id @default(cuid())
   url         String    @unique
   contentType String
+  // "index" = a trusted root/listing page we discover article links from;
+  // "page"  = a single article page we fetch + transform into content.
+  mode        String    @default("page")
   lastCrawled DateTime?
   status      String    @default("pending")
+  // Set on discovered pages to trace which index root produced them.
+  discoveredFrom String?
 
   @@map("crawl_sources")
 }

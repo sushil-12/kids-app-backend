@@ -26,7 +26,7 @@ export class OpenAIService {
     return `openai:calls:${today}`;
   }
 
-  async complete(system: string, user: string): Promise<string> {
+  async complete(system: string, user: string, maxTokens = 300): Promise<string> {
     const key = this.getTodayKey();
     const callCount = await this.redis.get(key);
     const count = parseInt(callCount ?? '0', 10);
@@ -42,8 +42,12 @@ export class OpenAIService {
 
     const response = await this.client.chat.completions.create({
       model: 'gpt-4o-mini',
-      max_tokens: 400,
+      max_tokens: maxTokens,
       temperature: 0.8,
+      // Forces valid JSON output: removes the need to strip markdown fences and,
+      // crucially, prevents JSON.parse failures that would trigger BullMQ retries
+      // (each retry being another paid OpenAI call). The prompts already say "JSON".
+      response_format: { type: 'json_object' },
       messages: [
         { role: 'system', content: system },
         { role: 'user', content: user },

@@ -96,3 +96,31 @@ export async function updateCrawlSource(id: string, data: Partial<CrawlSource>):
 export async function createCrawlSource(data: Omit<CrawlSource, 'id' | 'lastCrawled'>): Promise<CrawlSource> {
   return prisma.crawlSource.create({ data });
 }
+
+/// Records a page discovered while crawling an index root. Returns the new
+/// source's id, or `null` if the URL is already known — so re-sweeping a root
+/// is idempotent and never re-queues a page that already exists.
+export async function upsertDiscoveredPage(data: {
+  url: string;
+  contentType: string;
+  discoveredFrom: string;
+}): Promise<string | null> {
+  const existing = await prisma.crawlSource.findUnique({ where: { url: data.url } });
+  if (existing) return null;
+  const created = await prisma.crawlSource.create({
+    data: {
+      url: data.url,
+      contentType: data.contentType,
+      mode: 'page',
+      status: 'pending',
+      discoveredFrom: data.discoveredFrom,
+    },
+  });
+  return created.id;
+}
+
+export async function getAllCrawlSources(): Promise<CrawlSource[]> {
+  return prisma.crawlSource.findMany({
+    orderBy: [{ lastCrawled: 'desc' }, { url: 'asc' }],
+  });
+}

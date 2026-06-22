@@ -38,12 +38,13 @@ export function setupScheduledJobs(): void {
     }
   );
 
-  // Crawl sweep every 6 hours
+  // Crawl sweep every 4 hours (crawl-first policy: keep the library topped up so the
+  // app rarely needs an on-demand OpenAI generation).
   generateQueue.add(
     'crawl-sweep',
     { type: 'crawl-sweep' },
     {
-      repeat: { pattern: '0 */6 * * *' },
+      repeat: { pattern: '0 */4 * * *' },
       jobId: 'crawl-sweep',
     }
   );
@@ -103,12 +104,13 @@ export function setupScheduledJobs(): void {
           }
         }
       } else if (type === 'crawl-sweep') {
-        const sources = await getPendingCrawlSources(10);
+        const sources = await getPendingCrawlSources(25);
         for (const source of sources) {
           await crawlQueue.add('crawl', {
             sourceId: source.id,
             url: source.url,
             contentType: source.contentType,
+            mode: source.mode,
           });
         }
         logger.info({ count: sources.length }, 'Enqueued crawl jobs');

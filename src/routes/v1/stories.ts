@@ -1,14 +1,39 @@
 import { FastifyPluginAsync } from 'fastify';
+import { CinematicStory } from '@prisma/client';
 import {
   getStoryForToday,
   getOldestEvergreenStory,
+  getStoryById,
   incrementStoryUsedCount,
   getContentCounts,
   createCrawlSource,
   getAllCrawlSources,
+  getCinematicStoryForToday,
+  getCinematicStoryById,
+  incrementCinematicStoryUsedCount,
   prisma,
 } from '../../db/content.repo';
 import { generateQueue, crawlQueue } from '../../jobs/queue';
+
+/** Wire format for a cinematic story — the shape the Flutter player parses. */
+function serializeCinematic(story: CinematicStory): Record<string, unknown> {
+  return {
+    id: story.id,
+    slug: story.slug,
+    title: story.title,
+    lang: story.lang,
+    ageBand: story.ageBand,
+    category: story.category,
+    coverEmoji: story.coverEmoji,
+    music: story.music,
+    moral: story.moral,
+    reward: story.reward,
+    scenes: story.scenes,
+    date: story.date,
+    source: story.source,
+    generatedAt: story.createdAt,
+  };
+}
 
 function getTodayString(): string {
   return new Date().toISOString().split('T')[0];
@@ -79,6 +104,74 @@ export const storiesRoute: FastifyPluginAsync = async (fastify) => {
         generatedAt: placeholder.createdAt,
       });
     }
+  );
+
+  // Daily cinematic story: the scene-based interactive format the app's story
+  // player renders. Published-only (today's dated + evergreen), least-used
+  // rotation. On a miss we enqueue generation (it lands unpublished, for
+  // review) and return 503 — the app falls back to its bundled offline story.
+  fastify.get<{ Querystring: { ageBand?: string; lang?: string } }>(
+    '/stories/cinematic/daily',
+    { preHandler: [fastify.authenticate] },
+    async (request, reply) => {
+      const ageBand = (request.query.ageBand ?? 'junior') as 'junior' | 'senior';
+      if (!['junior', 'senior'].includes(ageBand)) {
+        return reply.code(400).send({ error: 'ageBand must be "junior" or "senior"' });
+      }
+      const lang = (request.query.lang ?? 'en') as 'en' | 'hi';
+      if (!['en', 'hi'].includes(lang)) {
+        return reply.code(400).send({ error: 'lang must be "en" or "hi"' });
+      }
+
+      const today = getTodayString();
+      const story = await getCinematicStoryForToday(ageBand, lang, today);
+
+      if (story) {
+        await incrementCinematicStoryUsedCount(story.id);
+        return reply.send(serializeCinematic(story));
+      }
+
+      await generateQueue.add('generate-cinematic', {
+        type: 'cinematic-story',
+        ageBand,
+        lang,
+        date: today,
+      });
+
+      return reply
+        .code(503)
+        .send({ error: 'No cinematic story available yet. Please try again shortly.' });
+    },
+  );
+
+  // Single cinematic story by id or slug — deep links + admin preview reuse.
+  fastify.get<{ Params: { id: string } }>(
+    '/stories/cinematic/:id',
+    { preHandler: [fastify.authenticate] },
+    async (request, reply) => {
+      const story = await getCinematicStoryById(request.params.id);
+      if (!story || !story.published) {
+        return reply.code(404).send({ error: 'Story not found' });
+      }
+      return reply.send(serializeCinematic(story));
+    },
+  );
+
+  // Provenance for a grounded story: the retrieved passages used to generate
+  // it. Lets the Flutter app show parents "Based on: …" so generation is
+  // transparent, not a black box. Returns null sources for legacy/un-grounded
+  // content (the app renders those without an attribution block).
+  fastify.get<{ Params: { id: string } }>(
+    '/stories/:id/sources',
+    { preHandler: [fastify.authenticate] },
+    async (request, reply) => {
+      const story = await getStoryById(request.params.id);
+      if (!story) {
+        return reply.code(404).send({ error: 'Story not found' });
+      }
+      const sources = Array.isArray(story.sources) ? story.sources : [];
+      return reply.send({ id: story.id, sources });
+    },
   );
 
   // Admin stats route

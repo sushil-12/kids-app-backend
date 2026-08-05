@@ -9,12 +9,68 @@ import {
   updateCrawlSource,
   upsertDiscoveredPage,
 } from '../db/content.repo';
+import { insertChunk, chunkHashExists, hashText } from '../db/vector.repo';
+import { chunkText } from '../services/chunker';
 import { crawlQueue } from './queue';
 import Redis from 'ioredis';
 import { config } from '../config';
 import pino from 'pino';
 
 const logger = pino({ level: config.LOG_LEVEL });
+
+/// Chunk + embed the raw crawled text into the RAG corpus so future generations
+/// can retrieve it as grounding context. Idempotent via contentHash: re-crawling
+/// a page never re-embeds a chunk we already have. Embed-limit failures defer
+/// (mark pending) rather than fail the crawl — the sweep will retry.
+/// Exported for direct unit testing (the BullMQ worker wrapper isn't testable
+/// in isolation).
+export async function embedCrawledText(
+  openaiService: OpenAIService,
+  args: {
+    url: string;
+    title: string;
+    kind: 'story' | 'poem' | 'abc';
+    body: string;
+    ageBand: string | null;
+    topic?: string | null;
+  },
+): Promise<void> {
+  const chunks = chunkText(args.body);
+  const toEmbed: { text: string; hash: string; tokens: number }[] = [];
+  for (const c of chunks) {
+    const hash = hashText(c.text);
+    if (await chunkHashExists(hash)) continue;
+    toEmbed.push({ text: c.text, hash, tokens: c.tokens });
+  }
+  if (toEmbed.length === 0) return;
+
+  try {
+    const vectors = await openaiService.embed(toEmbed.map((c) => c.text));
+    for (let i = 0; i < toEmbed.length; i++) {
+      await insertChunk(
+        {
+          kind: args.kind,
+          sourceUrl: args.url,
+          sourceTitle: args.title,
+          ageBand: args.ageBand,
+          lang: 'en',
+          topic: args.topic ?? null,
+          text: toEmbed[i].text,
+          contentHash: toEmbed[i].hash,
+          tokens: toEmbed[i].tokens,
+        },
+        vectors[i],
+      );
+    }
+    logger.info({ url: args.url, embedded: toEmbed.length }, 'Embedded crawled chunks');
+  } catch (err) {
+    if (err instanceof DailyLimitReachedException) {
+      logger.warn({ url: args.url }, 'Embed limit reached — chunks deferred');
+      return;
+    }
+    throw err;
+  }
+}
 
 export function setupCrawlWorker(): void {
   const redis = new Redis(config.REDIS_URL, { maxRetriesPerRequest: null });
@@ -94,6 +150,13 @@ export function setupCrawlWorker(): void {
             source: 'crawled',
             date: null,
           });
+          await embedCrawledText(openaiService, {
+            url,
+            title: crawled.title,
+            kind: 'story',
+            body: crawled.body,
+            ageBand: parsed['ageBand'] === 'senior' ? 'senior' : 'junior',
+          });
         } else if (contentType === 'poem') {
           await createPoem({
             topic: parsed['topic'] ?? 'Nature',
@@ -101,6 +164,14 @@ export function setupCrawlWorker(): void {
             lines: parsed['poem'] ?? '',
             emoji: parsed['emoji'] ?? '🌟',
             source: 'crawled',
+          });
+          await embedCrawledText(openaiService, {
+            url,
+            title: crawled.title,
+            kind: 'poem',
+            body: crawled.body,
+            ageBand: null,
+            topic: parsed['topic'] ?? null,
           });
         } else if (contentType === 'abc') {
           await upsertAbcLesson({
@@ -110,6 +181,13 @@ export function setupCrawlWorker(): void {
             phonics: parsed['phonics'] ?? '',
             miniStory: parsed['miniStory'] ?? '',
             source: 'crawled',
+          });
+          await embedCrawledText(openaiService, {
+            url,
+            title: crawled.title,
+            kind: 'abc',
+            body: crawled.body,
+            ageBand: null,
           });
         }
 

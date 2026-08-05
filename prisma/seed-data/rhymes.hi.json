@@ -1,0 +1,319 @@
+{
+  "_note": "हिन्दी rhymes seeded as their own content packs — NOT translations of the English ones. Rhyme, metre and wordplay do not survive translation, so a Hindi shelf is a different set of poems, and the pack validator rejects a bilingual poem outright. `source` is \"folk\" (a traditional rhyme with no known author, sung for generations) or \"original\" (written for this app). Deliberately no film songs: Bollywood lyrics are copyrighted however familiar they feel.",
+  "lang": "hi",
+  "rhymes": [
+    {
+      "title": "मछली जल की रानी है",
+      "slug": "machhli-jal-ki-rani",
+      "topic": "Animals",
+      "emoji": "🐟",
+      "mood": "cheerful",
+      "source": "folk",
+      "stanzas": [
+        ["मछली जल की रानी है,", "जीवन उसका पानी है।"],
+        ["हाथ लगाओ डर जाएगी,", "बाहर निकालो मर जाएगी।"]
+      ]
+    },
+    {
+      "title": "हाथी राजा",
+      "slug": "hathi-raja",
+      "topic": "Animals",
+      "emoji": "🐘",
+      "mood": "cheerful",
+      "source": "folk",
+      "stanzas": [
+        ["हाथी राजा बहुत बड़े,", "सूँड़ उठाकर कहाँ चले?"],
+        ["मेरे घर भी आ जाओ,", "हलवा पूरी खा जाओ।"]
+      ]
+    },
+    {
+      "title": "तितली रानी",
+      "slug": "titli-rani",
+      "topic": "Animals",
+      "emoji": "🦋",
+      "mood": "tender",
+      "source": "original",
+      "stanzas": [
+        ["तितली रानी उड़ती जाए,", "फूल-फूल पर बैठी जाए।"],
+        ["रंग-बिरंगे पंख निराले,", "बाग़ में सबसे प्यारे-प्यारे।"]
+      ]
+    },
+    {
+      "title": "बिल्ली मौसी",
+      "slug": "billi-mausi",
+      "topic": "Animals",
+      "emoji": "🐱",
+      "mood": "cheerful",
+      "source": "folk",
+      "stanzas": [
+        ["आओ बिल्ली मौसी आओ,", "दूध कटोरी भर के लाओ।"],
+        ["म्याऊँ म्याऊँ करती जाए,", "चुपके से वह दूध पी जाए।"]
+      ]
+    },
+    {
+      "title": "चंदा मामा",
+      "slug": "chanda-mama",
+      "topic": "Nature",
+      "emoji": "🌙",
+      "mood": "sleepy",
+      "source": "folk",
+      "stanzas": [
+        ["चंदा मामा दूर के,", "पुए पकाएँ बूर के।"],
+        ["आप खाएँ थाली में,", "मुन्ने को दें प्याली में।"]
+      ]
+    },
+    {
+      "title": "बारिश आई",
+      "slug": "barish-aayi",
+      "topic": "Nature",
+      "emoji": "☔",
+      "mood": "cheerful",
+      "source": "original",
+      "stanzas": [
+        ["बारिश आई छम-छम-छम,", "भीग गए हम, भीग गए तुम।"],
+        ["कागज़ की नाव बनाएँ,", "पानी में उसे तैराएँ।"]
+      ]
+    },
+    {
+      "title": "सूरज दादा",
+      "slug": "suraj-dada",
+      "topic": "Nature",
+      "emoji": "☀️",
+      "mood": "cheerful",
+      "source": "original",
+      "stanzas": [
+        ["सूरज दादा जल्दी आओ,", "अपनी किरणें फैलाओ।"],
+        ["अँधेरा सारा भाग गया,", "सुबह का सूरज जाग गया।"]
+      ]
+    },
+    {
+      "title": "एक दो तीन",
+      "slug": "ek-do-teen",
+      "topic": "Numbers",
+      "emoji": "🔢",
+      "mood": "cheerful",
+      "source": "original",
+      "stanzas": [
+        ["एक दो तीन चार,", "गिनती सीखो बार-बार।"],
+        ["पाँच छह सात आठ,", "उँगली पर है सारा पाठ।"],
+        ["नौ दस पूरे हो गए,", "हम गिनती में खो गए!"]
+      ]
+    },
+    {
+      "title": "दस उँगलियाँ",
+      "slug": "das-ungliyan",
+      "topic": "Numbers",
+      "emoji": "🖐️",
+      "mood": "cheerful",
+      "source": "original",
+      "stanzas": [
+        ["दस उँगलियाँ, दो हैं हाथ,", "सब मिलकर करते हैं बात।"],
+        ["ताली बजाओ एक-दो-तीन,", "खेल हमारा बड़ा रंगीन।"]
+      ]
+    },
+    {
+      "title": "आलू कचालू",
+      "slug": "aloo-kachaloo",
+      "topic": "Food",
+      "emoji": "🥔",
+      "mood": "cheerful",
+      "source": "folk",
+      "stanzas": [
+        ["आलू कचालू बेटा कहाँ गए थे?", "बंदर की झोपड़ी में सो रहे थे।"],
+        ["बंदर ने लात मारी रो रहे थे,", "मम्मी ने प्यार किया हँस रहे थे।"]
+      ]
+    },
+    {
+      "title": "रोटी गोल",
+      "slug": "roti-gol",
+      "topic": "Food",
+      "emoji": "🫓",
+      "mood": "cheerful",
+      "source": "original",
+      "stanzas": [
+        ["रोटी गोल, परांठा गोल,", "मम्मी बोलीं खाओ बोल।"],
+        ["दाल-चावल और सब्ज़ी,", "खा लो सारी, बनो तगड़ी।"]
+      ]
+    },
+    {
+      "title": "मेरा परिवार",
+      "slug": "mera-parivar",
+      "topic": "Family",
+      "emoji": "👨‍👩‍👧",
+      "mood": "tender",
+      "source": "original",
+      "stanzas": [
+        ["मम्मी प्यारी, पापा प्यारे,", "दादी-दादा सबसे न्यारे।"],
+        ["सब मिलकर हँसते-गाते,", "मेरा घर है सबसे प्यारा।"]
+      ]
+    },
+    {
+      "title": "दादी की कहानी",
+      "slug": "dadi-ki-kahani",
+      "topic": "Family",
+      "emoji": "👵",
+      "mood": "tender",
+      "source": "original",
+      "stanzas": [
+        ["दादी अम्मा कहानी सुनाओ,", "राजा-रानी की बात बताओ।"],
+        ["सुनते-सुनते नींद आ जाए,", "सपनों में वह राजा आए।"]
+      ]
+    },
+    {
+      "title": "भैया-बहना",
+      "slug": "bhaiya-bahna",
+      "topic": "Family",
+      "emoji": "👫",
+      "mood": "cheerful",
+      "source": "original",
+      "stanzas": [
+        ["भैया-बहना साथ में खेलें,", "मिल-बाँट कर टॉफ़ी लें लें।"],
+        ["लड़ें ज़रा, फिर मान जाएँ,", "हँसते-हँसते गले लगाएँ।"]
+      ]
+    },
+    {
+      "title": "मेरे दो हाथ",
+      "slug": "mere-do-haath",
+      "topic": "Body",
+      "emoji": "🙌",
+      "mood": "cheerful",
+      "source": "original",
+      "stanzas": [
+        ["मेरे दो हाथ, मेरे दो पाँव,", "एक है सिर और दो हैं कान।"],
+        ["आँखें दो और नाक है एक,", "मेरा शरीर है सबसे नेक।"]
+      ]
+    },
+    {
+      "title": "रंगों की टोली",
+      "slug": "rangon-ki-toli",
+      "topic": "Colors",
+      "emoji": "🎨",
+      "mood": "cheerful",
+      "source": "original",
+      "stanzas": [
+        ["लाल सेब और पीला आम,", "हरा तोता, नीला आसमान।"],
+        ["रंग-बिरंगी दुनिया प्यारी,", "सबसे सुंदर, सबसे न्यारी।"]
+      ]
+    },
+    {
+      "title": "इंद्रधनुष",
+      "slug": "indradhanush",
+      "topic": "Colors",
+      "emoji": "🌈",
+      "mood": "cheerful",
+      "source": "original",
+      "stanzas": [
+        ["बारिश के बाद निकला रंग,", "सात रंगों का प्यारा ढंग।"],
+        ["आसमान पर पुल-सा छाया,", "इंद्रधनुष हमको भाया।"]
+      ]
+    },
+    {
+      "title": "मेरा शरीर",
+      "slug": "mera-sharir",
+      "topic": "Body",
+      "emoji": "🧒",
+      "mood": "cheerful",
+      "source": "original",
+      "stanzas": [
+        ["सिर हिलाओ, ताली बजाओ,", "पाँव पटक कर नाचते जाओ।"],
+        ["आँख झपक कर मुस्कुराओ,", "अपने शरीर को पहचानो।"]
+      ]
+    },
+    {
+      "title": "साइकिल मेरी",
+      "slug": "cycle-meri",
+      "topic": "Vehicles",
+      "emoji": "🚲",
+      "mood": "cheerful",
+      "source": "original",
+      "stanzas": [
+        ["साइकिल मेरी टन-टन-टन,", "चलती जाए छन-छन-छन।"],
+        ["पैडल मारो, आगे बढ़ो,", "हवा से बातें करते चलो।"]
+      ]
+    },
+    {
+      "title": "गर्मी की छुट्टी",
+      "slug": "garmi-ki-chhutti",
+      "topic": "Seasons",
+      "emoji": "🥭",
+      "mood": "cheerful",
+      "source": "original",
+      "stanzas": [
+        ["गर्मी आई, छुट्टी आई,", "आम की टोकरी घर में लाई।"],
+        ["पंखे के नीचे बैठे हम,", "ठंडा शरबत पीते हम।"]
+      ]
+    },
+    {
+      "title": "नींद की परी",
+      "slug": "neend-ki-pari",
+      "topic": "Bedtime",
+      "emoji": "🧚",
+      "mood": "sleepy",
+      "source": "original",
+      "stanzas": [
+        ["नींद की परी धीरे आई,", "आँखों में वह सपने लाई।"],
+        ["चुपके-चुपके लोरी गाए,", "मीठी नींद हमें सुलाए।"]
+      ]
+    },
+    {
+      "title": "गिनो तारे",
+      "slug": "gino-tare",
+      "topic": "Numbers",
+      "emoji": "✨",
+      "mood": "sleepy",
+      "source": "original",
+      "stanzas": [
+        ["एक तारा, दो तारे, तीन,", "आसमान में चमकें झीन।"],
+        ["चार, पाँच गिनते जाएँ,", "गिनते-गिनते सो ही जाएँ।"]
+      ]
+    },
+    {
+      "title": "मीठे फल",
+      "slug": "meethe-phal",
+      "topic": "Food",
+      "emoji": "🍌",
+      "mood": "cheerful",
+      "source": "original",
+      "stanzas": [
+        ["केला, सेब, अंगूर, अनार,", "फल खाओ तो सेहत हज़ार।"],
+        ["रोज़ खाओ एक-एक फल,", "तंदुरुस्त रहोगे हर पल।"]
+      ]
+    },
+    {
+      "title": "रेलगाड़ी",
+      "slug": "relgadi",
+      "topic": "Vehicles",
+      "emoji": "🚂",
+      "mood": "cheerful",
+      "source": "folk",
+      "stanzas": [
+        ["रेलगाड़ी रेलगाड़ी,", "छुक-छुक छुक-छुक छुक-छुक छुक।"],
+        ["बीच वाले स्टेशन पर,", "रुक-रुक रुक-रुक रुक-रुक रुक!"]
+      ]
+    },
+    {
+      "title": "सो जा मेरे राजा",
+      "slug": "so-ja-mere-raja",
+      "topic": "Bedtime",
+      "emoji": "🌜",
+      "mood": "sleepy",
+      "source": "original",
+      "stanzas": [
+        ["सो जा मेरे प्यारे राजा,", "रात हुई है, चुप हो बाजा।"],
+        ["तारे सारे झिलमिल करते,", "सपनों की वे बातें कहते।"]
+      ]
+    },
+    {
+      "title": "सर्दी आई",
+      "slug": "sardi-aayi",
+      "topic": "Seasons",
+      "emoji": "🧣",
+      "mood": "tender",
+      "source": "original",
+      "stanzas": [
+        ["सर्दी आई ठंडी-ठंडी,", "पहन लो टोपी, पहन लो बंडी।"],
+        ["धूप में बैठो, मूँगफली खाओ,", "गरम-गरम चाय बनवाओ।"]
+      ]
+    }
+  ]
+}

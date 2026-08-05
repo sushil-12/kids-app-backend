@@ -1,4 +1,7 @@
 import { PrismaClient } from '@prisma/client';
+import { coloringSeedPages } from './coloring-art';
+import { cinematicSeedStories } from './cinematic-seed';
+import { seedPacks } from './seed.packs';
 
 const prisma = new PrismaClient();
 
@@ -159,7 +162,59 @@ async function main(): Promise<void> {
     ],
   });
 
+  // Coloring pages: the 4 bundled pictures as evergreen pages (date: null), so
+  // the backend has content to serve and the app pipeline is verifiable.
+  for (const page of coloringSeedPages) {
+    const data = {
+      slug: page.slug,
+      title: page.title,
+      viewBox: 100,
+      isPremium: page.isPremium,
+      stickerRewardId: page.stickerRewardId,
+      regions: page.regions,
+      outlines: page.outlines,
+      details: page.details,
+      date: null,
+      source: 'manual',
+      published: true,
+    };
+    await prisma.coloringPage.upsert({
+      where: { slug: page.slug },
+      update: data,
+      create: data,
+    });
+  }
+
+  // Cinematic stories: hand-authored Thirsty Crow (en + hi), evergreen and
+  // published so the app's story player works before any AI generation.
+  for (const story of cinematicSeedStories) {
+    const data = {
+      slug: story.slug,
+      title: story.title,
+      lang: story.lang,
+      ageBand: story.ageBand,
+      category: story.category,
+      coverEmoji: story.coverEmoji,
+      music: story.music,
+      moral: story.moral,
+      reward: story.reward,
+      scenes: story.scenes,
+      date: null,
+      source: 'manual',
+      published: true,
+    };
+    await prisma.cinematicStory.upsert({
+      where: { slug: story.slug },
+      update: data,
+      create: data,
+    });
+  }
+
+  // Content packs (v3): the moment-based documents behind every Learn screen.
+  await seedPacks();
+
   console.log('Seeding complete.');
+  console.log('Next: populate the RAG corpus by running `npm run db:backfill`');
 }
 
 main()

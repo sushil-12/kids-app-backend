@@ -7,3 +7,6 @@ process.env['API_KEY'] = 'test-api-key';
 process.env['ADMIN_API_KEY'] = 'test-admin-key';
 process.env['NODE_ENV'] = 'test';
 process.env['DAILY_OPENAI_CALL_LIMIT'] = '10';
+process.env['PUBLIC_BASE_URL'] = 'https://api.test.local';
+process.env['ELEVENLABS_API_KEY'] = 'eleven-test';
+process.env['ELEVENLABS_DAILY_CHAR_LIMIT'] = '1000';

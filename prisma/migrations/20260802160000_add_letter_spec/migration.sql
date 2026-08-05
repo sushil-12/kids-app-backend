@@ -1,0 +1,12 @@
+-- ABC packs gain a structured letter lesson alongside their cinematic moments.
+--
+-- Until now the only per-letter data a pack carried was prose baked into
+-- narration strings ("A is for Apple. A says /ae/."), which the app could render
+-- but never reason about — no per-word pictures, no separable letter sound, no
+-- second or third exemplar word. `letterSpec` is that data, structured:
+-- glyphs, letter name, pure phoneme, articulation cue and 3-4 exemplar words
+-- each with its own image id and recorded audio.
+--
+-- Nullable and additive: every existing pack (story, poem, and the 26 prose-only
+-- ABC packs) keeps validating and serving unchanged until it is re-seeded.
+ALTER TABLE "content_packs" ADD COLUMN "letterSpec" JSONB;

@@ -17,10 +17,205 @@ model Story {
   emoji     String
   source    String
   date      String?
+  // Provenance for grounded generation: [{ title, url }] of the retrieved
+  // passages used to ground the LLM. null = legacy/un-grounded content.
+  sources   Json?
   usedCount Int      @default(0)
   createdAt DateTime @default(now())
 
   @@map("stories")
+}
+
+// Cinematic scene-based story. The whole playable document (scenes, staging,
+// interactions) is JSON validated against src/services/cinematic.schema.ts
+// before it's ever written — the app renders it with a fixed visual vocabulary
+// (background presets, prop/character kinds, particle effects), so no CDN
+// assets are needed. Follows the ColoringPage pattern: AI output lands
+// unpublished and only reaches kids after admin review.
+model CinematicStory {
+  id         String   @id @default(cuid())
+  slug       String   @unique
+  title      String
+  // "en" | "hi"
+  lang       String   @default("en")
+  // "junior" | "senior"
+  ageBand    String
+  category   String   @default("Moral Stories")
+  coverEmoji String
+  // Bundled music loop the app plays: "forest" | "calm" | "playful" | "night".
+  music      String   @default("calm")
+  moral      String
+  // { stars, coins, badgeStickerId }
+  reward     Json
+  // [{ id, title, minDuration, background, narration, camera, props,
+  //    characters, particles, interaction }]
+  scenes     Json
+  // "YYYY-MM-DD" for a story that surfaces on a given day; null = evergreen.
+  date       String?
+  source     String   @default("manual")
+  sources    Json?
+  published  Boolean  @default(false)
+  usedCount  Int      @default(0)
+  createdAt  DateTime @default(now())
+
+  @@index([ageBand, lang, published])
+  @@map("cinematic_stories")
+}
+
+// ─────────────────────────── Content packs (v3) ───────────────────────────
+// The unified, moment-based content document behind EVERY Learn screen:
+// cinematic stories, poems and ABC letters are all the same shape, so there is
+// one schema (src/services/pack.schema.ts), one admin editor and one player in
+// the app. Supersedes CinematicStory above, which stays for the legacy
+// /v1/stories/cinematic/* endpoints.
+//
+// Two things make a pack manageable without an app release:
+//   assetManifest — [{ id, type, url }] of externally hosted pictures. Moments
+//                   reference an asset by id, so swapping a picture is one URL
+//                   edit in the admin portal.
+//   moments       — the ordered scene list (visual, narration, cues, camera).
+//
+// Text fields are BILINGUAL maps ({ en, hi }) stored verbatim; the app collapses
+// them to one language at parse time (CinematicStoryV3.fromJson(json, lang:)),
+// so a single cached document serves the in-player EN ⇄ हिन्दी pill.
+model ContentPack {
+  id                String   @id @default(cuid())
+  // Stable id the app addresses: "thirsty-crow", "poem-the-busy-bee", "abc-a".
+  slug              String   @unique
+  // "story" | "poem" | "abc" — which Learn surface this pack feeds.
+  kind              String
+  schemaVersion     String   @default("3.0")
+  // { en, hi }
+  title             Json
+  availableLangs    Json     @default("[\"en\"]")
+  // "junior" | "senior"
+  ageBand           String   @default("junior")
+  category          String   @default("Moral Stories")
+  concepts          Json     @default("[]")
+  // { en, hi }
+  moral             Json
+  estimatedDuration Int      @default(150)
+  // { emoji, image (assetManifest id), palette[] }
+  cover             Json
+  // { music, ambience, voicePack, narrationSpeed }
+  audio             Json
+  // { stars, coins, badgeStickerId }
+  reward            Json
+  // [{ id, type, url, bytes, v }] — externally hosted media, pasted by an admin.
+  assetManifest     Json     @default("[]")
+  // StoryMoment[] — the v3 wire shape verbatim.
+  moments           Json
+  // Poems only: "Animals" | "Seasons" | "Numbers" | "Colors" | "Nature".
+  topic             String?
+  // ABC only: the glyph this pack teaches — "A".."Z" today, a Devanagari varna
+  // ("क") once that track is seeded. Kept as a plain string, not an enum.
+  letter            String?
+  // ABC only: the structured letter LESSON the app renders as a card — glyphs
+  // (upper/lower), the letter name, the pure phoneme, an articulation cue and
+  // 3-4 exemplar words, each with its own picture and recorded audio.
+  //
+  // `moments` above stays the cinematic "Watch the story" timeline; this is the
+  // teaching surface, and the two are deliberately separate: a story is a
+  // sequence, a letter is a record. Shape + rules live in
+  // src/services/pack.schema.ts (letterSpecSchema).
+  //
+  // Text fields are the same bilingual { en, hi } maps as the rest of the pack,
+  // and image ids resolve against `assetManifest` exactly like moment visuals.
+  letterSpec        Json?
+  // "YYYY-MM-DD" for a pack that surfaces on a given day; null = evergreen.
+  date              String?
+  source            String   @default("manual")
+  // Same publish gate as ColoringPage: AI/imported content lands unpublished.
+  published         Boolean  @default(false)
+  usedCount         Int      @default(0)
+  // Bumped on every write. The app caches by `pack_<slug>_<version>`, so an
+  // admin edit invalidates the on-device copy without a cache-busting header.
+  version           Int      @default(1)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  clips NarrationClip[]
+
+  @@index([kind, published, ageBand])
+  @@index([kind, topic])
+  @@index([kind, letter])
+  @@map("content_packs")
+}
+
+// A recorded voice-over line, generated server-side from a moment's narration
+// text (ElevenLabs — see src/services/narration.service.ts). The app streams +
+// caches these and falls back to on-device TTS whenever a clip is missing or
+// unreachable, so a pack with no clips still plays.
+//
+// Storage goes through the MediaStore interface (src/services/media.store.ts):
+//   S3 configured  → bytes in the bucket, `storageKey` set, `url` is the CDN
+//                    link written into the pack.
+//   otherwise      → bytes inline in `bytes`, served by GET /v1/media/
+//                    narration/:id.mp3.
+// Both shapes coexist: clips recorded before S3 was switched on keep serving
+// from Postgres, so enabling the bucket never orphans existing audio.
+model NarrationClip {
+  id          String      @id @default(cuid())
+  packId      String
+  pack        ContentPack @relation(fields: [packId], references: [id], onDelete: Cascade)
+  momentId    String
+  // "en" | "hi"
+  lang        String
+  // "narration" = the moment's line; "gate" = its soft-gate prompt.
+  kind        String      @default("narration")
+  mime        String      @default("audio/mpeg")
+  // Inline audio. Null once the clip lives in object storage.
+  bytes       Bytes?
+  byteLength  Int
+  // Object key in the bucket. Null for Postgres-backed clips.
+  storageKey  String?
+  // Public URL the pack points at — the CDN/S3 link, or this API's media route.
+  url         String?
+  // sha256(text + lang + voiceId + settings). Re-generating a pack whose text
+  // didn't change is free — the hash matches and synthesis is skipped.
+  contentHash String
+  voiceId     String
+  // [{ w, t }] — word start times inside this clip, folded from ElevenLabs'
+  // character alignment. Stored here as well as in the pack so a re-run that
+  // SKIPS an unchanged clip can restore its timings without paying to
+  // synthesise the line again.
+  marks       Json?
+  // Clip length in ms, when the synthesis reported alignment.
+  durationMs  Int?
+  createdAt   DateTime    @default(now())
+
+  @@unique([packId, momentId, lang, kind])
+  @@index([contentHash])
+  @@map("narration_clips")
+}
+
+// Artwork uploaded through the content portal.
+//
+// A pack's assetManifest still references pictures by URL — that contract is
+// unchanged, and a pasted third-party URL is still perfectly valid. This table
+// is the library of images WE host: it exists so an admin can upload once and
+// reuse the same picture across packs, and so an orphaned object in the bucket
+// can be found and deleted rather than accumulating forever.
+//
+// Bytes never pass through this API. The portal asks for a presigned PUT and
+// uploads straight to S3; this row is written once that succeeds.
+model MediaAsset {
+  id           String   @id @default(cuid())
+  // Object key in the bucket.
+  storageKey   String   @unique
+  // Public URL (CDN if configured, else the virtual-hosted S3 URL). This is
+  // what gets pasted into a pack's assetManifest.
+  url          String
+  mime         String
+  byteLength   Int
+  // The file name the admin uploaded, for a recognisable library listing.
+  originalName String
+  // Free-form grouping so the portal can filter ("thirsty-crow", "abc").
+  folder       String   @default("packs")
+  createdAt    DateTime @default(now())
+
+  @@index([folder, createdAt])
+  @@map("media_assets")
 }
 
 model Poem {
@@ -30,6 +225,7 @@ model Poem {
   lines     String   @db.Text
   emoji     String
   source    String
+  sources   Json?
   usedCount Int      @default(0)
   createdAt DateTime @default(now())
 
@@ -44,9 +240,67 @@ model AbcLesson {
   phonics   String
   miniStory String   @db.Text
   source    String
+  sources   Json?
   updatedAt DateTime @updatedAt
 
   @@map("abc_lessons")
+}
+
+// RAG retrieval corpus. Each row is one embedded passage (a chunk of a crawled
+// page, a curated seed, or a kid-safe fact). `embedding` is a pgvector column
+// (text-embedding-3-small = 1536 dims); Prisma can't type `vector`, so it's
+// `Unsupported` and read/written via raw SQL in src/db/vector.repo.ts. The HNSW
+// cosine index is created in the migration (Prisma can't declare it).
+// `contentHash` makes embed/backfill idempotent — re-crawling a page never
+// re-embeds a chunk we already have.
+model DocumentChunk {
+  id          String   @id @default(cuid())
+  // "story" | "poem" | "abc" | "fact" — which corpus this chunk belongs to.
+  kind        String
+  sourceUrl   String?
+  sourceTitle String?
+  // "junior" | "senior" for age-banded content; null = suitable for all ages.
+  ageBand     String?
+  lang        String   @default("en")
+  topic       String?
+  text        String   @db.Text
+  embedding   Unsupported("vector(1536)")?
+  contentHash String   @unique
+  tokens      Int
+  createdAt   DateTime @default(now())
+
+  @@index([kind, ageBand, lang])
+  @@map("document_chunks")
+}
+
+model ColoringPage {
+  id              String   @id @default(cuid())
+  // Stable id the app uses (e.g. "sun"). Maps to ColoringTemplate.id in Flutter.
+  slug            String   @unique
+  title           String
+  viewBox         Float    @default(100)
+  isPremium       Boolean  @default(false)
+  stickerRewardId String
+  // SVG line-art stored as JSON so pages are pure data (no app release needed):
+  //   regions  : [{ id, d, byNumber? }]  fillable areas, back-to-front
+  //   outlines : [d, ...]                black stroked line art
+  //   details  : [d, ...]                tiny solid shapes (eyes, knobs)
+  // Each `d` is an SVG path string in a square viewBox; the app parses it
+  // straight into a Flutter Path. See src/routes/v1/coloring.ts.
+  regions         Json
+  outlines        Json
+  details         Json     @default("[]")
+  // "YYYY-MM-DD" for a page that surfaces on a given day; null = evergreen.
+  date            String?
+  source          String   @default("manual")
+  // Gate for AI output: generated pages land unpublished (published=false) and
+  // are only served to kids once an admin approves them. Manual uploads and
+  // seeds are published immediately.
+  published       Boolean  @default(false)
+  usedCount       Int      @default(0)
+  createdAt       DateTime @default(now())
+
+  @@map("coloring_pages")
 }
 
 model CrawlSource {

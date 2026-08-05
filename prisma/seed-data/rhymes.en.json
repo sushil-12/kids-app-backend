@@ -1,0 +1,433 @@
+{
+  "_note": "English rhymes seeded as content packs. `source` is either \"folk\" (a traditional nursery rhyme in the public domain — all of these predate 1900) or \"original\" (written for this app, so we own it). Nothing here is a modern licensed song. One stanza per `stanzas` entry; each becomes one moment, one recorded clip and one picture slot.",
+  "lang": "en",
+  "rhymes": [
+    {
+      "title": "Twinkle, Twinkle, Little Star",
+      "topic": "Nature",
+      "emoji": "⭐",
+      "mood": "calm",
+      "source": "folk",
+      "stanzas": [
+        ["Twinkle, twinkle, little star,", "How I wonder what you are!"],
+        ["Up above the world so high,", "Like a diamond in the sky."],
+        ["Twinkle, twinkle, little star,", "How I wonder what you are!"]
+      ]
+    },
+    {
+      "title": "Baa, Baa, Black Sheep",
+      "topic": "Animals",
+      "emoji": "🐑",
+      "mood": "cheerful",
+      "source": "folk",
+      "stanzas": [
+        ["Baa, baa, black sheep,", "Have you any wool?"],
+        ["Yes sir, yes sir,", "Three bags full."],
+        ["One for the master,", "One for the dame,"],
+        ["And one for the little boy", "Who lives down the lane."]
+      ]
+    },
+    {
+      "title": "Mary Had a Little Lamb",
+      "topic": "Animals",
+      "emoji": "🐏",
+      "mood": "tender",
+      "source": "folk",
+      "stanzas": [
+        ["Mary had a little lamb,", "Its fleece was white as snow."],
+        ["And everywhere that Mary went,", "The lamb was sure to go."],
+        ["It followed her to school one day,", "Which was against the rule."],
+        ["It made the children laugh and play", "To see a lamb at school."]
+      ]
+    },
+    {
+      "title": "Hickory Dickory Dock",
+      "topic": "Animals",
+      "emoji": "🐭",
+      "mood": "cheerful",
+      "source": "folk",
+      "stanzas": [
+        ["Hickory, dickory, dock,", "The mouse ran up the clock."],
+        ["The clock struck one,", "The mouse ran down!"],
+        ["Hickory, dickory, dock."]
+      ]
+    },
+    {
+      "title": "The Itsy Bitsy Spider",
+      "topic": "Animals",
+      "emoji": "🕷️",
+      "mood": "cheerful",
+      "source": "folk",
+      "stanzas": [
+        ["The itsy bitsy spider", "Climbed up the waterspout."],
+        ["Down came the rain", "And washed the spider out."],
+        ["Out came the sun", "And dried up all the rain,"],
+        ["And the itsy bitsy spider", "Climbed up the spout again."]
+      ]
+    },
+    {
+      "title": "Little Bo-Peep",
+      "topic": "Animals",
+      "emoji": "🐑",
+      "mood": "tender",
+      "source": "folk",
+      "stanzas": [
+        ["Little Bo-Peep has lost her sheep,", "And doesn't know where to find them."],
+        ["Leave them alone and they'll come home,", "Wagging their tails behind them."]
+      ]
+    },
+    {
+      "title": "Rain, Rain, Go Away",
+      "topic": "Nature",
+      "emoji": "🌧️",
+      "mood": "cheerful",
+      "source": "folk",
+      "stanzas": [
+        ["Rain, rain, go away,", "Come again another day."],
+        ["Little children want to play,", "Rain, rain, go away."]
+      ]
+    },
+    {
+      "title": "I Hear Thunder",
+      "topic": "Nature",
+      "emoji": "⛈️",
+      "mood": "cheerful",
+      "source": "folk",
+      "stanzas": [
+        ["I hear thunder, I hear thunder.", "Hark, don't you? Hark, don't you?"],
+        ["Pitter patter raindrops,", "Pitter patter raindrops,"],
+        ["I'm wet through,", "So are you!"]
+      ]
+    },
+    {
+      "title": "The North Wind Doth Blow",
+      "topic": "Seasons",
+      "emoji": "🍃",
+      "mood": "tender",
+      "source": "folk",
+      "stanzas": [
+        ["The north wind doth blow,", "And we shall have snow."],
+        ["And what will poor robin do then,", "Poor thing?"],
+        ["He'll sit in a barn", "And keep himself warm,"],
+        ["And hide his head under his wing,", "Poor thing."]
+      ]
+    },
+    {
+      "title": "Here We Go Round the Mulberry Bush",
+      "topic": "Seasons",
+      "emoji": "🌳",
+      "mood": "cheerful",
+      "source": "folk",
+      "stanzas": [
+        ["Here we go round the mulberry bush,", "The mulberry bush, the mulberry bush."],
+        ["Here we go round the mulberry bush,", "So early in the morning."]
+      ]
+    },
+    {
+      "title": "Jack Frost",
+      "topic": "Seasons",
+      "emoji": "❄️",
+      "mood": "calm",
+      "source": "original",
+      "stanzas": [
+        ["Jack Frost came in the night,", "And painted all the windows white."],
+        ["He drew a leaf, he drew a star,", "Then tiptoed off to somewhere far."]
+      ]
+    },
+    {
+      "title": "Autumn Leaves Are Falling",
+      "topic": "Seasons",
+      "emoji": "🍂",
+      "mood": "tender",
+      "source": "original",
+      "stanzas": [
+        ["Autumn leaves are falling down,", "Red and yellow, gold and brown."],
+        ["Catch one, catch one, if you can —", "Round and round and down they ran."]
+      ]
+    },
+    {
+      "title": "One, Two, Buckle My Shoe",
+      "topic": "Numbers",
+      "emoji": "👞",
+      "mood": "cheerful",
+      "source": "folk",
+      "stanzas": [
+        ["One, two, buckle my shoe.", "Three, four, knock at the door."],
+        ["Five, six, pick up sticks.", "Seven, eight, lay them straight."],
+        ["Nine, ten, a big fat hen!"]
+      ]
+    },
+    {
+      "title": "One, Two, Three, Four, Five",
+      "topic": "Numbers",
+      "emoji": "🐟",
+      "mood": "cheerful",
+      "source": "folk",
+      "stanzas": [
+        ["One, two, three, four, five,", "Once I caught a fish alive."],
+        ["Six, seven, eight, nine, ten,", "Then I let it go again."],
+        ["Why did you let it go?", "Because it bit my finger so!"]
+      ]
+    },
+    {
+      "title": "Five Little Ducks",
+      "topic": "Numbers",
+      "emoji": "🦆",
+      "mood": "tender",
+      "source": "folk",
+      "stanzas": [
+        ["Five little ducks went out one day,", "Over the hills and far away."],
+        ["Mother duck said, \"Quack, quack, quack, quack,\"", "But only four little ducks came back."],
+        ["Mother duck said, \"Quack, quack, quack, quack,\"", "And all of the five little ducks came back!"]
+      ]
+    },
+    {
+      "title": "Ten Little Fingers",
+      "topic": "Numbers",
+      "emoji": "🙌",
+      "mood": "cheerful",
+      "source": "original",
+      "stanzas": [
+        ["Ten little fingers, ten little toes,", "Two little ears and one little nose."],
+        ["Count them with me, one by one,", "Ten little fingers — counting is fun!"]
+      ]
+    },
+    {
+      "title": "Red as an Apple",
+      "topic": "Colors",
+      "emoji": "🍎",
+      "mood": "cheerful",
+      "source": "original",
+      "stanzas": [
+        ["Red as an apple, red as a rose,", "Red as the cherry on my nose!"],
+        ["Look around and you will see", "How many reds there are with me."]
+      ]
+    },
+    {
+      "title": "Blue Is the Sky",
+      "topic": "Colors",
+      "emoji": "💙",
+      "mood": "calm",
+      "source": "original",
+      "stanzas": [
+        ["Blue is the sky above my head,", "Blue is the blanket on my bed."],
+        ["Blue is the sea, so wide and deep,", "Blue is the dream I have in sleep."]
+      ]
+    },
+    {
+      "title": "A Box of Colors",
+      "topic": "Colors",
+      "emoji": "🖍️",
+      "mood": "cheerful",
+      "source": "original",
+      "stanzas": [
+        ["Yellow for the sun so bright,", "Green for grass and leaves of light."],
+        ["Orange, purple, pink and brown —", "I can paint the whole big town!"]
+      ]
+    },
+    {
+      "title": "Head, Shoulders, Knees and Toes",
+      "topic": "Body",
+      "emoji": "🧒",
+      "mood": "cheerful",
+      "source": "folk",
+      "stanzas": [
+        ["Head, shoulders, knees and toes,", "Knees and toes!"],
+        ["Head, shoulders, knees and toes,", "Knees and toes!"],
+        ["Eyes and ears and mouth and nose,", "Head, shoulders, knees and toes!"]
+      ]
+    },
+    {
+      "title": "This Little Piggy",
+      "topic": "Body",
+      "emoji": "🐷",
+      "mood": "cheerful",
+      "source": "folk",
+      "stanzas": [
+        ["This little piggy went to market,", "This little piggy stayed home."],
+        ["This little piggy had roast beef,", "This little piggy had none."],
+        ["And this little piggy cried", "\"Wee, wee, wee!\" all the way home."]
+      ]
+    },
+    {
+      "title": "Two Little Hands",
+      "topic": "Body",
+      "emoji": "👏",
+      "mood": "cheerful",
+      "source": "original",
+      "stanzas": [
+        ["Two little hands go clap, clap, clap.", "Two little feet go tap, tap, tap."],
+        ["One little body turns around,", "One little child sits quietly down."]
+      ]
+    },
+    {
+      "title": "Pat-a-Cake",
+      "topic": "Family",
+      "emoji": "🎂",
+      "mood": "cheerful",
+      "source": "folk",
+      "stanzas": [
+        ["Pat-a-cake, pat-a-cake, baker's man,", "Bake me a cake as fast as you can."],
+        ["Pat it and prick it and mark it with B,", "And put it in the oven for baby and me!"]
+      ]
+    },
+    {
+      "title": "Rock-a-Bye, Baby",
+      "topic": "Family",
+      "emoji": "👶",
+      "mood": "sleepy",
+      "source": "folk",
+      "stanzas": [
+        ["Rock-a-bye, baby, on the treetop,", "When the wind blows the cradle will rock."],
+        ["Gently the branches sway to and fro,", "Softly the little one sleeps below."]
+      ]
+    },
+    {
+      "title": "Where Is Thumbkin?",
+      "topic": "Family",
+      "emoji": "👍",
+      "mood": "cheerful",
+      "source": "folk",
+      "stanzas": [
+        ["Where is Thumbkin? Where is Thumbkin?", "Here I am! Here I am!"],
+        ["How are you today, sir?", "Very well, I thank you."],
+        ["Run away, run away."]
+      ]
+    },
+    {
+      "title": "Hot Cross Buns",
+      "topic": "Food",
+      "emoji": "🥐",
+      "mood": "cheerful",
+      "source": "folk",
+      "stanzas": [
+        ["Hot cross buns! Hot cross buns!", "One a penny, two a penny, hot cross buns!"],
+        ["If you have no daughters,", "Give them to your sons."],
+        ["One a penny, two a penny,", "Hot cross buns!"]
+      ]
+    },
+    {
+      "title": "Pease Porridge Hot",
+      "topic": "Food",
+      "emoji": "🥣",
+      "mood": "cheerful",
+      "source": "folk",
+      "stanzas": [
+        ["Pease porridge hot, pease porridge cold,", "Pease porridge in the pot, nine days old."],
+        ["Some like it hot, some like it cold,", "Some like it in the pot, nine days old!"]
+      ]
+    },
+    {
+      "title": "Little Jack Horner",
+      "topic": "Food",
+      "emoji": "🥧",
+      "mood": "cheerful",
+      "source": "folk",
+      "stanzas": [
+        ["Little Jack Horner sat in a corner,", "Eating his Christmas pie."],
+        ["He put in his thumb and pulled out a plum,", "And said, \"What a good boy am I!\""]
+      ]
+    },
+    {
+      "title": "Polly, Put the Kettle On",
+      "topic": "Food",
+      "emoji": "🫖",
+      "mood": "cheerful",
+      "source": "folk",
+      "stanzas": [
+        ["Polly, put the kettle on,", "Polly, put the kettle on,"],
+        ["Polly, put the kettle on,", "We'll all have tea."],
+        ["Sukey, take it off again,", "They've all gone away!"]
+      ]
+    },
+    {
+      "title": "The Wheels on the Bus",
+      "topic": "Vehicles",
+      "emoji": "🚌",
+      "mood": "cheerful",
+      "source": "folk",
+      "stanzas": [
+        ["The wheels on the bus go round and round,", "Round and round, round and round."],
+        ["The wheels on the bus go round and round,", "All through the town!"],
+        ["The wipers on the bus go swish, swish, swish,", "All through the town!"]
+      ]
+    },
+    {
+      "title": "Row, Row, Row Your Boat",
+      "topic": "Vehicles",
+      "emoji": "🚣",
+      "mood": "calm",
+      "source": "folk",
+      "stanzas": [
+        ["Row, row, row your boat,", "Gently down the stream."],
+        ["Merrily, merrily, merrily, merrily,", "Life is but a dream."]
+      ]
+    },
+    {
+      "title": "The Little Red Train",
+      "topic": "Vehicles",
+      "emoji": "🚂",
+      "mood": "cheerful",
+      "source": "original",
+      "stanzas": [
+        ["Chuff, chuff, chuff goes the little red train,", "Over the bridge and down the lane."],
+        ["Toot, toot, toot — it's time to go!", "Chuff, chuff, chuff, but not too slow."]
+      ]
+    },
+    {
+      "title": "Up in the Aeroplane",
+      "topic": "Vehicles",
+      "emoji": "✈️",
+      "mood": "cheerful",
+      "source": "original",
+      "stanzas": [
+        ["Up in the aeroplane, up so high,", "Over the houses, into the sky."],
+        ["Wings out wide and round we go,", "Wave to the tiny world below!"]
+      ]
+    },
+    {
+      "title": "Star Light, Star Bright",
+      "topic": "Bedtime",
+      "emoji": "🌟",
+      "mood": "sleepy",
+      "source": "folk",
+      "stanzas": [
+        ["Star light, star bright,", "First star I see tonight."],
+        ["I wish I may, I wish I might,", "Have the wish I wish tonight."]
+      ]
+    },
+    {
+      "title": "Wee Willie Winkie",
+      "topic": "Bedtime",
+      "emoji": "🕯️",
+      "mood": "sleepy",
+      "source": "folk",
+      "stanzas": [
+        ["Wee Willie Winkie runs through the town,", "Upstairs and downstairs in his nightgown."],
+        ["Rapping at the window, crying through the lock,", "\"Are the children in their beds? It's past eight o'clock!\""]
+      ]
+    },
+    {
+      "title": "Hush, Little Baby",
+      "topic": "Bedtime",
+      "emoji": "🌙",
+      "mood": "sleepy",
+      "source": "folk",
+      "stanzas": [
+        ["Hush, little baby, don't say a word,", "Papa's going to buy you a mockingbird."],
+        ["And if that mockingbird won't sing,", "Papa's going to buy you a diamond ring."]
+      ]
+    },
+    {
+      "title": "Golden Slumbers",
+      "topic": "Bedtime",
+      "emoji": "😴",
+      "mood": "sleepy",
+      "source": "folk",
+      "stanzas": [
+        ["Golden slumbers kiss your eyes,", "Smiles awake you when you rise."],
+        ["Sleep, pretty baby, do not cry,", "And I will sing a lullaby."]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1008 @@
+{
+  "schemaVersion": "3.0",
+  "id": "story_thirsty_crow",
+  "slug": "thirsty-crow",
+  "title": {
+    "en": "The Thirsty Crow",
+    "hi": "प्यासा कौआ"
+  },
+  "availableLangs": [
+    "en",
+    "hi"
+  ],
+  "ageBand": "junior",
+  "category": "Moral Stories",
+  "concepts": [
+    "problem-solving",
+    "patience",
+    "cleverness"
+  ],
+  "moral": {
+    "en": "Little by little, a hard problem can be solved.",
+    "hi": "थोड़ा-थोड़ा करके, कठिन समस्या भी हल हो सकती है।"
+  },
+  "estimatedDuration": 180,
+  "artBibleRef": "docs/stories/thirsty_crow_art_bible.md",
+  "cover": {
+    "emoji": "🐦‍⬛",
+    "image": "img_cover",
+    "palette": [
+      "#FFCC40",
+      "#2EBDB5"
+    ]
+  },
+  "audio": {
+    "music": {
+      "track": "calm",
+      "volume": 0.35,
+      "loop": true
+    },
+    "ambience": {
+      "bed": "dry_summer",
+      "volume": 0.2,
+      "loop": true
+    },
+    "voicePack": {
+      "en": "warm_storyteller",
+      "hi": "warm_storyteller_hi"
+    },
+    "narrationSpeed": 1.0
+  },
+  "reward": {
+    "stars": 10,
+    "coins": 5,
+    "badgeStickerId": "crow"
+  },
+  "assetManifest": [
+    {
+      "id": "img_cover",
+      "type": "image",
+      "bytes": 0,
+      "v": 1,
+      "url": "https://1800limo.s3.us-east-2.amazonaws.com/images/ZD32Uu5Z7VSL8eelQHIfIXoqCdAH3RJnmvWqZoeY.png"
+    },
+    {
+      "id": "img_search",
+      "type": "image",
+      "bytes": 0,
+      "v": 1,
+      "url": "https://1800limo.s3.us-east-2.amazonaws.com/images/MCVJyTfyTiKdpjigqJ5Y1n0Umkp97hpYa97VibGi.png"
+    },
+    {
+      "id": "img_too_deep",
+      "type": "image",
+      "bytes": 0,
+      "v": 1,
+      "url": "https://1800limo.s3.us-east-2.amazonaws.com/images/4FB2NkXWalfqyw6RyLKRY3bNVC8feWlUb548K2Pj.png"
+    },
+    {
+      "id": "img_idea",
+      "type": "image",
+      "bytes": 0,
+      "v": 1,
+      "url": "https://1800limo.s3.us-east-2.amazonaws.com/images/4FB2NkXWalfqyw6RyLKRY3bNVC8feWlUb548K2Pj.png"
+    },
+    {
+      "id": "img_end_calm",
+      "type": "image",
+      "bytes": 0,
+      "v": 1,
+      "url": "https://1800limo.s3.us-east-2.amazonaws.com/images/ZD32Uu5Z7VSL8eelQHIfIXoqCdAH3RJnmvWqZoeY.png"
+    },
+    {
+      "id": "img_heat_poster",
+      "type": "image",
+      "bytes": 0,
+      "v": 1,
+      "url": "https://1800limo.s3.us-east-2.amazonaws.com/images/ZD32Uu5Z7VSL8eelQHIfIXoqCdAH3RJnmvWqZoeY.png"
+    },
+    {
+      "id": "img_find_poster",
+      "type": "image",
+      "bytes": 0,
+      "v": 1,
+      "url": "https://1800limo.s3.us-east-2.amazonaws.com/images/MCVJyTfyTiKdpjigqJ5Y1n0Umkp97hpYa97VibGi.png"
+    },
+    {
+      "id": "img_water_poster",
+      "type": "image",
+      "bytes": 0,
+      "v": 1,
+      "url": "https://1800limo.s3.us-east-2.amazonaws.com/images/4FB2NkXWalfqyw6RyLKRY3bNVC8feWlUb548K2Pj.png"
+    },
+    {
+      "id": "img_drink_poster",
+      "type": "image",
+      "bytes": 0,
+      "v": 1,
+      "url": "https://1800limo.s3.us-east-2.amazonaws.com/images/4FB2NkXWalfqyw6RyLKRY3bNVC8feWlUb548K2Pj.png"
+    }
+  ],
+  "moments": [
+    {
+      "id": "m1",
+      "title": {
+        "en": "Heat & Thirst",
+        "hi": "गर्मी और प्यास"
+      },
+      "job": "establish",
+      "minDuration": 25,
+      "mood": "tender",
+      "timeOfDay": "noon",
+      "weather": "clear",
+      "lighting": "warm",
+      "learningObjective": "Feel the crow's thirst and need.",
+      "visual": {
+        "primary": "image",
+        "asset": "img_heat_poster"
+      },
+      "vectorFallback": {
+        "background": "hot_day",
+        "cast": [
+          {
+            "id": "cinder",
+            "kind": "crow",
+            "x": 0.5,
+            "y": 0.58,
+            "scale": 1.35,
+            "facing": "right",
+            "emotion": "worried"
+          }
+        ],
+        "layers": [
+          {
+            "z": 0,
+            "props": [
+              {
+                "id": "sun",
+                "kind": "sun",
+                "x": 0.78,
+                "y": 0.18,
+                "scale": 1.1
+              }
+            ]
+          }
+        ],
+        "particles": [
+          "sun_rays"
+        ]
+      },
+      "camera": {
+        "from": {
+          "zoom": 1.0,
+          "offset": [
+            0,
+            0
+          ]
+        },
+        "to": {
+          "zoom": 1.2,
+          "offset": [
+            0,
+            -0.03
+          ]
+        },
+        "duration": 7,
+        "ease": "easeInOutSine",
+        "startAt": 0.5
+      },
+      "audio": {
+        "music": {
+          "track": "calm",
+          "volume": 0.35
+        },
+        "ambience": {
+          "bed": "dry_summer",
+          "volume": 0.2
+        }
+      },
+      "transition": {
+        "in": {
+          "type": "fade",
+          "duration": 0.8
+        },
+        "out": {
+          "type": "dissolve",
+          "duration": 0.8
+        }
+      },
+      "narration": {
+        "text": {
+          "en": "Come gather around, little ones! Settle in, because today I am going to tell you a story about a very special, very clever little friend of ours. It was a scorching, dry summer afternoon. The bright golden sun was beating down on the village, and the wind was hot. Our little hero, a shiny black crow, was feeling very, very thirsty. His tiny throat was completely dry, and he felt so weak he could barely hop.",
+          "hi": "आओ बच्चों, जल्दी से मेरे पास आकर बैठ जाओ! आज मैं तुम्हें एक बहुत ही चतुर और समझदार दोस्त की कहानी सुनाती हूँ। गर्मियों के दिन थे। आसमान से जैसे आग बरस रही थी और सूरज बहुत तेज़ चमक रहा था। उस चिलचिलाती गर्मी में, हमारा एक छोटा सा कौआ बहुत ही प्यासा था। गर्मी के मारे उसका गला सूखा जा रहा था।"
+        },
+        "granularity": "sentence",
+        "marks": []
+      },
+      "cues": [
+        {
+          "type": "character",
+          "t": 2.0,
+          "target": "cinder",
+          "action": "hop"
+        },
+        {
+          "type": "hold",
+          "t": 6.5,
+          "duration": 1.2
+        }
+      ]
+    },
+    {
+      "id": "m2",
+      "title": {
+        "en": "The Search",
+        "hi": "तलाश"
+      },
+      "job": "journey",
+      "minDuration": 15,
+      "mood": "calm",
+      "timeOfDay": "noon",
+      "weather": "clear",
+      "lighting": "warm",
+      "visual": {
+        "primary": "image",
+        "asset": "img_search"
+      },
+      "vectorFallback": {
+        "background": "sky",
+        "cast": [
+          {
+            "id": "cinder",
+            "kind": "crow",
+            "x": 0.4,
+            "y": 0.42,
+            "scale": 1.1,
+            "facing": "right",
+            "emotion": "determined"
+          }
+        ],
+        "layers": [
+          {
+            "z": 0,
+            "props": [
+              {
+                "id": "cloud1",
+                "kind": "cloud",
+                "x": 0.25,
+                "y": 0.22,
+                "scale": 1.2
+              }
+            ]
+          },
+          {
+            "z": 1,
+            "props": [
+              {
+                "id": "hills",
+                "kind": "mountain",
+                "x": 0.55,
+                "y": 0.78,
+                "scale": 1.8
+              }
+            ]
+          }
+        ],
+        "particles": [
+          "birds"
+        ]
+      },
+      "camera": {
+        "from": {
+          "zoom": 1.0,
+          "offset": [
+            -0.04,
+            0
+          ]
+        },
+        "to": {
+          "zoom": 1.08,
+          "offset": [
+            0.06,
+            -0.02
+          ]
+        },
+        "duration": 6.5,
+        "ease": "easeInOut",
+        "startAt": 0.2
+      },
+      "audio": {
+        "music": {
+          "track": "calm",
+          "volume": 0.35
+        },
+        "ambience": {
+          "bed": "dry_summer",
+          "volume": 0.2
+        }
+      },
+      "transition": {
+        "in": {
+          "type": "dissolve",
+          "duration": 0.8
+        },
+        "out": {
+          "type": "dissolve",
+          "duration": 0.8
+        }
+      },
+      "narration": {
+        "text": {
+          "en": "Whoosh... whoosh... He flapped his tired wings and flew up into the clear blue sky. He flew and flew, his little eyes searching the ground for rivers, puddles, or even a tiny drop of water. But everything was dried up.",
+          "hi": "उसने अपने थके हुए पंख फड़फड़ाए और पानी की तलाश में उड़ चला। वह आसमान में उड़ता रहा, उड़ता रहा। उसकी आँखें पानी की एक बूँद ढूँढ रही थीं, लेकिन गाँव में हर जगह सूखा पड़ा था।"
+        },
+        "granularity": "sentence",
+        "marks": []
+      },
+      "cues": [
+        {
+          "type": "character",
+          "t": 0.8,
+          "target": "cinder",
+          "action": "fly"
+        },
+        {
+          "type": "interaction",
+          "t": 0.0,
+          "trigger": "tap",
+          "target": "stage",
+          "reaction": "sparkle",
+          "sound": "chime",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "m3",
+      "title": {
+        "en": "Find the Pot",
+        "hi": "घड़ा मिला"
+      },
+      "job": "discovery",
+      "minDuration": 15,
+      "mood": "cheerful",
+      "timeOfDay": "afternoon",
+      "weather": "clear",
+      "lighting": "cool",
+      "visual": {
+        "primary": "image",
+        "asset": "img_find_poster"
+      },
+      "vectorFallback": {
+        "background": "village",
+        "cast": [
+          {
+            "id": "cinder",
+            "kind": "crow",
+            "x": 0.52,
+            "y": 0.48,
+            "scale": 1.15,
+            "facing": "left",
+            "emotion": "surprised"
+          }
+        ],
+        "layers": [
+          {
+            "z": 0,
+            "props": [
+              {
+                "id": "tree",
+                "kind": "tree",
+                "x": 0.2,
+                "y": 0.55,
+                "scale": 1.3
+              }
+            ]
+          },
+          {
+            "z": 1,
+            "props": [
+              {
+                "id": "pot",
+                "kind": "pot",
+                "x": 0.58,
+                "y": 0.72,
+                "scale": 1.4
+              }
+            ]
+          }
+        ],
+        "particles": []
+      },
+      "camera": {
+        "from": {
+          "zoom": 1.0,
+          "offset": [
+            0,
+            -0.04
+          ]
+        },
+        "to": {
+          "target": "pot",
+          "zoom": 1.25,
+          "offset": [
+            0.02,
+            0.02
+          ]
+        },
+        "duration": 6,
+        "ease": "easeInOutSine",
+        "startAt": 0.4
+      },
+      "audio": {
+        "music": {
+          "track": "calm",
+          "volume": 0.35
+        },
+        "ambience": {
+          "bed": "tree_shade",
+          "volume": 0.2
+        }
+      },
+      "transition": {
+        "in": {
+          "type": "dissolve",
+          "duration": 0.8
+        },
+        "out": {
+          "type": "dissolve",
+          "duration": 0.8
+        }
+      },
+      "narration": {
+        "text": {
+          "en": "Just as he was starting to feel he couldn't fly any further, he spotted something under the cool shade of a big tree. It was a clay pot! At last, he had found something. He fluttered down quickly, his heart filled with cheerful hope.",
+          "hi": "तभी अचानक, एक बड़े से पेड़ की ठंडी छाँव में उसकी नज़र एक मिट्टी के घड़े पर पड़ी! उसकी आँखों में चमक आ गई। 'शायद इसमें पानी हो!' यह सोचकर वह झट से उड़कर घड़े के पास पहुँच गया।"
+        },
+        "granularity": "sentence",
+        "marks": []
+      },
+      "cues": [
+        {
+          "type": "character",
+          "t": 4.6,
+          "target": "cinder",
+          "action": "hop"
+        }
+      ]
+    },
+    {
+      "id": "m4",
+      "title": {
+        "en": "Too Deep",
+        "hi": "बहुत गहरा"
+      },
+      "job": "struggle",
+      "minDuration": 20,
+      "mood": "tense",
+      "timeOfDay": "afternoon",
+      "weather": "clear",
+      "lighting": "cool",
+      "visual": {
+        "primary": "image",
+        "asset": "img_too_deep"
+      },
+      "vectorFallback": {
+        "background": "village",
+        "cast": [
+          {
+            "id": "cinder",
+            "kind": "crow",
+            "x": 0.5,
+            "y": 0.4,
+            "scale": 1.2,
+            "facing": "right",
+            "emotion": "sad"
+          }
+        ],
+        "layers": [
+          {
+            "z": 1,
+            "props": [
+              {
+                "id": "pot",
+                "kind": "pot",
+                "x": 0.5,
+                "y": 0.7,
+                "scale": 1.6
+              }
+            ]
+          }
+        ],
+        "particles": []
+      },
+      "camera": {
+        "from": {
+          "zoom": 1.05,
+          "offset": [
+            0,
+            0
+          ]
+        },
+        "to": {
+          "zoom": 1.18,
+          "offset": [
+            0,
+            0.02
+          ]
+        },
+        "duration": 6,
+        "ease": "easeInOut",
+        "startAt": 1.5
+      },
+      "audio": {
+        "music": {
+          "track": "calm",
+          "volume": 0.35
+        },
+        "ambience": {
+          "bed": "tree_shade",
+          "volume": 0.2
+        }
+      },
+      "transition": {
+        "in": {
+          "type": "fade",
+          "duration": 0.8
+        },
+        "out": {
+          "type": "dissolve",
+          "duration": 0.8
+        }
+      },
+      "narration": {
+        "text": {
+          "en": "He hopped onto the rim of the pot and peeked inside. There was water! But oh no... the water was too low, resting way down at the very bottom. He stretched his neck and reached down with his beak as far as he could, but it was just too deep. He could not drink. For a moment, the poor little bird felt very sad and helpless.",
+          "hi": "उसने घड़े के ऊपर बैठकर अंदर झाँका। पानी तो था! लेकिन... पानी बहुत नीचे था। उसने अपनी चोंच को जितना हो सके उतना लंबा किया, लेकिन पानी तक नहीं पहुँच पाया। वह बेचारा उदास हो गया, 'अब मैं क्या करूँ?'"
+        },
+        "granularity": "sentence",
+        "marks": []
+      },
+      "cues": [
+        {
+          "type": "hold",
+          "t": 0.3,
+          "duration": 1.5
+        },
+        {
+          "type": "character",
+          "t": 3.0,
+          "target": "cinder",
+          "action": "shake"
+        }
+      ]
+    },
+    {
+      "id": "m5",
+      "title": {
+        "en": "The Idea",
+        "hi": "विचार"
+      },
+      "job": "idea",
+      "minDuration": 15,
+      "mood": "mysterious",
+      "timeOfDay": "afternoon",
+      "weather": "clear",
+      "lighting": "warm",
+      "visual": {
+        "primary": "image",
+        "asset": "img_idea"
+      },
+      "vectorFallback": {
+        "background": "village",
+        "cast": [
+          {
+            "id": "cinder",
+            "kind": "crow",
+            "x": 0.45,
+            "y": 0.55,
+            "scale": 1.3,
+            "facing": "right",
+            "emotion": "surprised"
+          }
+        ],
+        "layers": [
+          {
+            "z": 1,
+            "props": [
+              {
+                "id": "pot",
+                "kind": "pot",
+                "x": 0.65,
+                "y": 0.72,
+                "scale": 1.2
+              }
+            ]
+          }
+        ],
+        "particles": [
+          "stars"
+        ]
+      },
+      "audio": {
+        "music": {
+          "track": "playful",
+          "volume": 0.35
+        },
+        "ambience": {
+          "bed": "tree_shade",
+          "volume": 0.2
+        }
+      },
+      "transition": {
+        "in": {
+          "type": "dissolve",
+          "duration": 0.8
+        },
+        "out": {
+          "type": "dissolve",
+          "duration": 0.8
+        }
+      },
+      "narration": {
+        "text": {
+          "en": "But our little crow was not one to just cry and give up! He stopped, shook his feathers, and looked around with determined eyes. Suddenly—Ding!—he had a wonderful idea!",
+          "hi": "लेकिन बच्चों, वह कौआ हार मानने वालों में से नहीं था। उसने अपनी परेशानी से घबराने के बजाय, आस-पास देखा। और तभी... उसके दिमाग में एक बहुत ही अच्छा विचार आया!"
+        },
+        "granularity": "sentence",
+        "marks": []
+      },
+      "cues": [
+        {
+          "type": "sfx",
+          "t": 0.8,
+          "sound": "chime",
+          "volume": 0.5
+        },
+        {
+          "type": "character",
+          "t": 1.0,
+          "target": "cinder",
+          "action": "jump"
+        }
+      ]
+    },
+    {
+      "id": "m6",
+      "title": "Dropping Stones",
+      "job": "agency",
+      "minDuration": 20,
+      "mood": "cheerful",
+      "timeOfDay": "afternoon",
+      "weather": "clear",
+      "lighting": "warm",
+      "learningObjective": "Little actions can solve a big problem.",
+      "visual": {
+        "primary": "image",
+        "asset": "img_too_deep"
+      },
+      "vectorFallback": {
+        "background": "village",
+        "cast": [
+          {
+            "id": "cinder",
+            "kind": "crow",
+            "x": 0.72,
+            "y": 0.58,
+            "scale": 1.15,
+            "facing": "left",
+            "emotion": "determined"
+          }
+        ],
+        "layers": [
+          {
+            "z": 0,
+            "props": [
+              {
+                "id": "tree",
+                "kind": "tree",
+                "x": 0.18,
+                "y": 0.5,
+                "scale": 1.2
+              }
+            ]
+          },
+          {
+            "z": 1,
+            "props": [
+              {
+                "id": "pot",
+                "kind": "pot",
+                "x": 0.5,
+                "y": 0.7,
+                "scale": 1.5
+              },
+              {
+                "id": "rock1",
+                "kind": "rock",
+                "x": 0.22,
+                "y": 0.78,
+                "scale": 0.7
+              },
+              {
+                "id": "rock2",
+                "kind": "rock",
+                "x": 0.3,
+                "y": 0.8,
+                "scale": 0.65
+              }
+            ]
+          }
+        ],
+        "particles": []
+      },
+      "audio": {
+        "music": {
+          "track": "playful",
+          "volume": 0.35
+        },
+        "ambience": {
+          "bed": "tree_shade",
+          "volume": 0.2
+        }
+      },
+      "transition": {
+        "in": {
+          "type": "dissolve",
+          "duration": 0.8
+        },
+        "out": {
+          "type": "dissolve",
+          "duration": 0.8
+        }
+      },
+      "narration": {
+        "text": {
+          "en": "Lying on the ground near the tree were lots of little stones. The clever crow hopped over, picked up a pebble in his beak, flew back to the pot, and dropped it in. Plop! Then he went back and got another. And another. One by one, he patiently dropped the little stones into the pot.",
+          "hi": "पास ही ज़मीन पर कुछ छोटे-छोटे कंकड़ और पत्थर पड़े थे। कौए ने अपनी चोंच से एक पत्थर उठाया और उसे घड़े में डाल दिया - छपाक! फिर उसने दूसरा पत्थर उठाया, फिर तीसरा। एक-एक करके, वह बिना थके छोटे पत्थर घड़े में डालता रहा।"
+        },
+        "granularity": "sentence",
+        "marks": []
+      },
+      "cues": [
+        {
+          "type": "sfx",
+          "t": 2.0,
+          "sound": "plop",
+          "volume": 0.4
+        },
+        {
+          "type": "sfx",
+          "t": 4.5,
+          "sound": "plop",
+          "volume": 0.4
+        },
+        {
+          "type": "character",
+          "t": 5.0,
+          "target": "cinder",
+          "action": "hop"
+        }
+      ]
+    },
+    {
+      "id": "m7",
+      "title": {
+        "en": "Water Rises",
+        "hi": "पानी चढ़ा"
+      },
+      "job": "payoff",
+      "minDuration": 15,
+      "mood": "triumphant",
+      "timeOfDay": "afternoon",
+      "weather": "clear",
+      "lighting": "golden",
+      "visual": {
+        "primary": "image",
+        "asset": "img_water_poster"
+      },
+      "vectorFallback": {
+        "background": "village",
+        "cast": [
+          {
+            "id": "cinder",
+            "kind": "crow",
+            "x": 0.55,
+            "y": 0.45,
+            "scale": 1.2,
+            "facing": "left",
+            "emotion": "happy"
+          }
+        ],
+        "layers": [
+          {
+            "z": 1,
+            "props": [
+              {
+                "id": "pot",
+                "kind": "pot",
+                "x": 0.5,
+                "y": 0.7,
+                "scale": 1.55
+              }
+            ]
+          }
+        ],
+        "particles": [
+          "bubbles"
+        ]
+      },
+      "camera": {
+        "from": {
+          "zoom": 1.1,
+          "offset": [
+            0,
+            0.04
+          ]
+        },
+        "to": {
+          "zoom": 1.22,
+          "offset": [
+            0,
+            -0.02
+          ]
+        },
+        "duration": 7,
+        "ease": "easeInOutSine",
+        "startAt": 0.3
+      },
+      "audio": {
+        "music": {
+          "track": "playful",
+          "volume": 0.35
+        },
+        "ambience": {
+          "bed": "tree_shade",
+          "volume": 0.2
+        }
+      },
+      "transition": {
+        "in": {
+          "type": "dissolve",
+          "duration": 0.8
+        },
+        "out": {
+          "type": "dissolve",
+          "duration": 0.8
+        }
+      },
+      "narration": {
+        "text": {
+          "en": "And do you know what happened? As the heavy stones filled the bottom of the pot, the water had nowhere to go but up! Up, up, up went the water, slowly rising higher and higher until it reached the very top!",
+          "hi": "और जानते हो क्या चमत्कार हुआ? जैसे-जैसे पत्थर घड़े के नीचे बैठते गए, पानी ऊपर, ऊपर, और ऊपर चढ़ता गया! थोड़ी ही देर में पानी घड़े के मुँह तक आ गया।"
+        },
+        "granularity": "sentence",
+        "marks": []
+      },
+      "cues": [
+        {
+          "type": "sfx",
+          "t": 1.0,
+          "sound": "plop",
+          "volume": 0.5
+        },
+        {
+          "type": "character",
+          "t": 6.0,
+          "target": "cinder",
+          "action": "hop"
+        }
+      ]
+    },
+    {
+      "id": "m8",
+      "title": {
+        "en": "Drink & Joy",
+        "hi": "पानी और खुशी"
+      },
+      "job": "catharsis",
+      "minDuration": 15,
+      "mood": "triumphant",
+      "timeOfDay": "afternoon",
+      "weather": "clear",
+      "lighting": "golden",
+      "visual": {
+        "primary": "image",
+        "asset": "img_drink_poster"
+      },
+      "vectorFallback": {
+        "background": "village",
+        "cast": [
+          {
+            "id": "cinder",
+            "kind": "crow",
+            "x": 0.5,
+            "y": 0.5,
+            "scale": 1.35,
+            "facing": "right",
+            "emotion": "proud"
+          }
+        ],
+        "layers": [
+          {
+            "z": 1,
+            "props": [
+              {
+                "id": "pot",
+                "kind": "pot",
+                "x": 0.48,
+                "y": 0.72,
+                "scale": 1.4
+              }
+            ]
+          }
+        ],
+        "particles": [
+          "stars"
+        ]
+      },
+      "camera": {
+        "from": {
+          "zoom": 1.15,
+          "offset": [
+            0,
+            0
+          ]
+        },
+        "to": {
+          "zoom": 1.3,
+          "offset": [
+            0,
+            -0.02
+          ]
+        },
+        "duration": 5,
+        "ease": "easeInOut",
+        "startAt": 0.2
+      },
+      "audio": {
+        "music": {
+          "track": "playful",
+          "volume": 0.35
+        },
+        "ambience": {
+          "bed": "tree_shade",
+          "volume": 0.2
+        }
+      },
+      "transition": {
+        "in": {
+          "type": "dissolve",
+          "duration": 0.8
+        },
+        "out": {
+          "type": "fade",
+          "duration": 0.9
+        }
+      },
+      "narration": {
+        "text": {
+          "en": "The clever crow dipped his beak into the cool, fresh water and drank, and drank, and drank. His thirst was quenched, his energy was back, and he was happy once again!",
+          "hi": "चतुर कौए ने जी भरकर मीठा और ठंडा पानी पिया। उसकी प्यास बुझ गई और वह फिर से बहुत खुश हो गया!"
+        },
+        "granularity": "sentence",
+        "marks": []
+      },
+      "cues": [
+        {
+          "type": "sfx",
+          "t": 0.6,
+          "sound": "plop",
+          "volume": 0.5
+        },
+        {
+          "type": "character",
+          "t": 3.5,
+          "target": "cinder",
+          "action": "celebrate"
+        },
+        {
+          "type": "sfx",
+          "t": 3.6,
+          "sound": "chime",
+          "volume": 0.5
+        }
+      ]
+    }
+  ]
+}

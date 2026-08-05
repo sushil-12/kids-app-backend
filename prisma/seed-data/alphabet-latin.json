@@ -1,0 +1,1370 @@
+{
+  "_readme": {
+    "what": "The Latin (English) letter cards. One entry per letter; seed.packs.ts turns each into the `letterSpec` of the abc-<letter> ContentPack. Mirrored in the app at lib/src/features/learn/data/alphabet_latin.dart — change one and change the other.",
+    "order": "Teaching order is s-a-t-p-i-n (Jolly Phonics / Letterland), not A-Z. Those first six letters build more real three-letter words than any other six, so a child blends an actual word on day one instead of waiting out an alphabetical march to S. The app offers A-Z as a display toggle.",
+    "phoneme.say": "The ONLY string ever handed to a voice engine for the letter sound. Never the glyph: reading a bare 'b' gets you the letter NAME ('bee'), and writing it 'buh' gets you a schwa, which demonstrably breaks blending later. So continuants are HELD ('sss', 'mmm', 'fff'), short vowels are written as the sound ('aaa', 'ehh'), and stops — which physically cannot be held — use the repeated clipped form ('t-t-t', 'b-b-b'), the standard phonics convention. Stops are the hardest case for any synthesizer; when one comes out wrong, an admin overrides that single letter by setting letterSpec.phoneme.audio to a human recording, and the app prefers it automatically.",
+    "word rules": [
+      "Primary/most-common sound only - no C-for-circle, G-for-giraffe, S-for-sugar.",
+      "No initial blends or clusters - a child cannot hear /t/ inside /tr/, so no 'tree' for T, no 'star' for S, no 'block' for B.",
+      "No coarticulation traps - 'ant' nasalizes the vowel, 'airplane' is r-controlled, 'elephant' reads as /l/, 'umbrella' reads as 'um'. Prefer apple, egg, up, igloo, octopus.",
+      "Concrete picturable nouns only - every word has to survive being a single unambiguous picture.",
+      "Every word needs an emoji even once it has art, so a fresh install and an offline device are never blank."
+    ],
+    "X": "X is taught in FINAL position (box, fox, six). It says /ks/ and practically never starts a word a four-year-old knows.",
+    "hi": "Hindi word text ships even though availableLangs stays ['en'] - the story narration isn't translated, but a Hindi-locale child should still read सेब under the apple. A real Devanagari varnamala track is its own script ('devanagari'), not a translation of this one."
+  },
+  "letters": [
+    {
+      "letter": "S",
+      "order": 1,
+      "glyph": {
+        "upper": "S",
+        "lower": "s"
+      },
+      "name": {
+        "en": "ess",
+        "hi": "एस"
+      },
+      "phoneme": {
+        "ipa": "/s/",
+        "say": {
+          "en": "sss",
+          "hi": "स्स्स"
+        }
+      },
+      "articulation": {
+        "en": "Smile, put your teeth together and hiss — sss",
+        "hi": "दाँत मिलाकर साँप जैसी आवाज़ करो — स्स्स"
+      },
+      "words": [
+        {
+          "id": "sun",
+          "en": "sun",
+          "hi": "सूरज",
+          "emoji": "☀️",
+          "sentence": {
+            "en": "The sun is warm."
+          }
+        },
+        {
+          "id": "sock",
+          "en": "sock",
+          "hi": "मोज़ा",
+          "emoji": "🧦",
+          "sentence": {
+            "en": "I lost one sock."
+          }
+        },
+        {
+          "id": "seal",
+          "en": "seal",
+          "hi": "सील",
+          "emoji": "🦭",
+          "sentence": {
+            "en": "The seal can swim."
+          }
+        }
+      ]
+    },
+    {
+      "letter": "A",
+      "order": 2,
+      "glyph": {
+        "upper": "A",
+        "lower": "a"
+      },
+      "name": {
+        "en": "ay",
+        "hi": "ए"
+      },
+      "phoneme": {
+        "ipa": "/æ/",
+        "say": {
+          "en": "aaa",
+          "hi": "ऍ"
+        }
+      },
+      "articulation": {
+        "en": "Open your mouth wide and say aaa",
+        "hi": "मुँह खोलकर बोलो — ऍ"
+      },
+      "words": [
+        {
+          "id": "apple",
+          "en": "apple",
+          "hi": "सेब",
+          "emoji": "🍎",
+          "sentence": {
+            "en": "The apple is red."
+          }
+        },
+        {
+          "id": "alligator",
+          "en": "alligator",
+          "hi": "मगरमच्छ",
+          "emoji": "🐊",
+          "sentence": {
+            "en": "The alligator has big teeth."
+          }
+        },
+        {
+          "id": "astronaut",
+          "en": "astronaut",
+          "hi": "अंतरिक्ष यात्री",
+          "emoji": "👨‍🚀",
+          "sentence": {
+            "en": "The astronaut flies to space."
+          }
+        }
+      ]
+    },
+    {
+      "letter": "T",
+      "order": 3,
+      "glyph": {
+        "upper": "T",
+        "lower": "t"
+      },
+      "name": {
+        "en": "tee",
+        "hi": "टी"
+      },
+      "phoneme": {
+        "ipa": "/t/",
+        "say": {
+          "en": "t-t-t",
+          "hi": "ट्-ट्-ट्"
+        }
+      },
+      "articulation": {
+        "en": "Tap your tongue behind your teeth — t-t-t",
+        "hi": "जीभ दाँतों के पीछे लगाकर बोलो — ट्"
+      },
+      "words": [
+        {
+          "id": "tiger",
+          "en": "tiger",
+          "hi": "बाघ",
+          "emoji": "🐯",
+          "sentence": {
+            "en": "The tiger has stripes."
+          }
+        },
+        {
+          "id": "teeth",
+          "en": "teeth",
+          "hi": "दाँत",
+          "emoji": "🦷",
+          "sentence": {
+            "en": "I brush my teeth."
+          }
+        },
+        {
+          "id": "tent",
+          "en": "tent",
+          "hi": "तंबू",
+          "emoji": "⛺",
+          "sentence": {
+            "en": "We sleep in a tent."
+          }
+        }
+      ]
+    },
+    {
+      "letter": "P",
+      "order": 4,
+      "glyph": {
+        "upper": "P",
+        "lower": "p"
+      },
+      "name": {
+        "en": "pee",
+        "hi": "पी"
+      },
+      "phoneme": {
+        "ipa": "/p/",
+        "say": {
+          "en": "p-p-p",
+          "hi": "प्-प्-प्"
+        }
+      },
+      "articulation": {
+        "en": "Press your lips and pop them open — p-p-p",
+        "hi": "होंठ दबाकर छोड़ो — प्"
+      },
+      "words": [
+        {
+          "id": "pig",
+          "en": "pig",
+          "hi": "सूअर",
+          "emoji": "🐷",
+          "sentence": {
+            "en": "The pig rolls in mud."
+          }
+        },
+        {
+          "id": "pen",
+          "en": "pen",
+          "hi": "कलम",
+          "emoji": "🖊️",
+          "sentence": {
+            "en": "I write with a pen."
+          }
+        },
+        {
+          "id": "pot",
+          "en": "pot",
+          "hi": "बर्तन",
+          "emoji": "🍲",
+          "sentence": {
+            "en": "Soup is in the pot."
+          }
+        }
+      ]
+    },
+    {
+      "letter": "I",
+      "order": 5,
+      "glyph": {
+        "upper": "I",
+        "lower": "i"
+      },
+      "name": {
+        "en": "eye",
+        "hi": "आई"
+      },
+      "phoneme": {
+        "ipa": "/ɪ/",
+        "say": {
+          "en": "ihh",
+          "hi": "इ"
+        }
+      },
+      "articulation": {
+        "en": "A tiny smile and a short sound — ihh",
+        "hi": "छोटा सा बोलो — इ"
+      },
+      "words": [
+        {
+          "id": "igloo",
+          "en": "igloo",
+          "hi": "इग्लू",
+          "emoji": "🛖",
+          "sentence": {
+            "en": "The igloo is made of ice."
+          }
+        },
+        {
+          "id": "insect",
+          "en": "insect",
+          "hi": "कीड़ा",
+          "emoji": "🐛",
+          "sentence": {
+            "en": "An insect has six legs."
+          }
+        },
+        {
+          "id": "ink",
+          "en": "ink",
+          "hi": "स्याही",
+          "emoji": "🖋️",
+          "sentence": {
+            "en": "The ink is blue."
+          }
+        }
+      ]
+    },
+    {
+      "letter": "N",
+      "order": 6,
+      "glyph": {
+        "upper": "N",
+        "lower": "n"
+      },
+      "name": {
+        "en": "en",
+        "hi": "एन"
+      },
+      "phoneme": {
+        "ipa": "/n/",
+        "say": {
+          "en": "nnn",
+          "hi": "न्न्न"
+        }
+      },
+      "articulation": {
+        "en": "Hum through your nose — nnn",
+        "hi": "नाक से गुनगुनाओ — न्न्न"
+      },
+      "words": [
+        {
+          "id": "net",
+          "en": "net",
+          "hi": "जाल",
+          "emoji": "🥅",
+          "sentence": {
+            "en": "The ball is in the net."
+          }
+        },
+        {
+          "id": "nose",
+          "en": "nose",
+          "hi": "नाक",
+          "emoji": "👃",
+          "sentence": {
+            "en": "I smell with my nose."
+          }
+        },
+        {
+          "id": "nest",
+          "en": "nest",
+          "hi": "घोंसला",
+          "emoji": "🪺",
+          "sentence": {
+            "en": "Eggs are in the nest."
+          }
+        }
+      ]
+    },
+    {
+      "letter": "C",
+      "order": 7,
+      "glyph": {
+        "upper": "C",
+        "lower": "c"
+      },
+      "name": {
+        "en": "see",
+        "hi": "सी"
+      },
+      "phoneme": {
+        "ipa": "/k/",
+        "say": {
+          "en": "k-k-k",
+          "hi": "क्-क्-क्"
+        }
+      },
+      "articulation": {
+        "en": "Click the back of your tongue — k-k-k",
+        "hi": "जीभ पीछे से बोलो — क्"
+      },
+      "words": [
+        {
+          "id": "cat",
+          "en": "cat",
+          "hi": "बिल्ली",
+          "emoji": "🐱",
+          "sentence": {
+            "en": "The cat says meow."
+          }
+        },
+        {
+          "id": "cup",
+          "en": "cup",
+          "hi": "कप",
+          "emoji": "🥤",
+          "sentence": {
+            "en": "My cup is full."
+          }
+        },
+        {
+          "id": "cow",
+          "en": "cow",
+          "hi": "गाय",
+          "emoji": "🐮",
+          "sentence": {
+            "en": "The cow eats grass."
+          }
+        }
+      ]
+    },
+    {
+      "letter": "K",
+      "order": 8,
+      "glyph": {
+        "upper": "K",
+        "lower": "k"
+      },
+      "name": {
+        "en": "kay",
+        "hi": "के"
+      },
+      "phoneme": {
+        "ipa": "/k/",
+        "say": {
+          "en": "k-k-k",
+          "hi": "क्-क्-क्"
+        }
+      },
+      "articulation": {
+        "en": "Same sound as C — k-k-k",
+        "hi": "C जैसी ही आवाज़ — क्"
+      },
+      "words": [
+        {
+          "id": "key",
+          "en": "key",
+          "hi": "चाबी",
+          "emoji": "🔑",
+          "sentence": {
+            "en": "The key opens the door."
+          }
+        },
+        {
+          "id": "kite",
+          "en": "kite",
+          "hi": "पतंग",
+          "emoji": "🪁",
+          "sentence": {
+            "en": "My kite flies high."
+          }
+        },
+        {
+          "id": "king",
+          "en": "king",
+          "hi": "राजा",
+          "emoji": "🤴",
+          "sentence": {
+            "en": "The king wears a crown."
+          }
+        }
+      ]
+    },
+    {
+      "letter": "E",
+      "order": 9,
+      "glyph": {
+        "upper": "E",
+        "lower": "e"
+      },
+      "name": {
+        "en": "ee",
+        "hi": "ई"
+      },
+      "phoneme": {
+        "ipa": "/ɛ/",
+        "say": {
+          "en": "ehh",
+          "hi": "ए"
+        }
+      },
+      "articulation": {
+        "en": "Open a little and say ehh",
+        "hi": "थोड़ा मुँह खोलकर बोलो — ए"
+      },
+      "words": [
+        {
+          "id": "egg",
+          "en": "egg",
+          "hi": "अंडा",
+          "emoji": "🥚",
+          "sentence": {
+            "en": "The egg is in the nest."
+          }
+        },
+        {
+          "id": "exit",
+          "en": "exit",
+          "hi": "निकास",
+          "emoji": "🚪",
+          "sentence": {
+            "en": "We go out the exit."
+          }
+        },
+        {
+          "id": "elbow",
+          "en": "elbow",
+          "hi": "कोहनी",
+          "emoji": "💪",
+          "sentence": {
+            "en": "I bend my elbow."
+          }
+        }
+      ]
+    },
+    {
+      "letter": "H",
+      "order": 10,
+      "glyph": {
+        "upper": "H",
+        "lower": "h"
+      },
+      "name": {
+        "en": "aitch",
+        "hi": "एच"
+      },
+      "phoneme": {
+        "ipa": "/h/",
+        "say": {
+          "en": "h-h-h",
+          "hi": "ह्-ह्-ह्"
+        }
+      },
+      "articulation": {
+        "en": "Breathe out softly — hh, hh",
+        "hi": "हल्की साँस छोड़ो — ह्"
+      },
+      "words": [
+        {
+          "id": "hat",
+          "en": "hat",
+          "hi": "टोपी",
+          "emoji": "🎩",
+          "sentence": {
+            "en": "The hat is on my head."
+          }
+        },
+        {
+          "id": "hen",
+          "en": "hen",
+          "hi": "मुर्गी",
+          "emoji": "🐔",
+          "sentence": {
+            "en": "The hen lays an egg."
+          }
+        },
+        {
+          "id": "house",
+          "en": "house",
+          "hi": "घर",
+          "emoji": "🏠",
+          "sentence": {
+            "en": "I live in a house."
+          }
+        }
+      ]
+    },
+    {
+      "letter": "R",
+      "order": 11,
+      "glyph": {
+        "upper": "R",
+        "lower": "r"
+      },
+      "name": {
+        "en": "ar",
+        "hi": "आर"
+      },
+      "phoneme": {
+        "ipa": "/r/",
+        "say": {
+          "en": "rrr",
+          "hi": "र्र्र"
+        }
+      },
+      "articulation": {
+        "en": "Growl like a puppy — rrr",
+        "hi": "पिल्ले जैसी आवाज़ — र्र्र"
+      },
+      "words": [
+        {
+          "id": "rain",
+          "en": "rain",
+          "hi": "बारिश",
+          "emoji": "🌧️",
+          "sentence": {
+            "en": "The rain is falling."
+          }
+        },
+        {
+          "id": "ring",
+          "en": "ring",
+          "hi": "अंगूठी",
+          "emoji": "💍",
+          "sentence": {
+            "en": "The ring is shiny."
+          }
+        },
+        {
+          "id": "rocket",
+          "en": "rocket",
+          "hi": "रॉकेट",
+          "emoji": "🚀",
+          "sentence": {
+            "en": "The rocket goes up."
+          }
+        }
+      ]
+    },
+    {
+      "letter": "M",
+      "order": 12,
+      "glyph": {
+        "upper": "M",
+        "lower": "m"
+      },
+      "name": {
+        "en": "em",
+        "hi": "एम"
+      },
+      "phoneme": {
+        "ipa": "/m/",
+        "say": {
+          "en": "mmm",
+          "hi": "म्म्म"
+        }
+      },
+      "articulation": {
+        "en": "Close your lips and hum — mmm",
+        "hi": "होंठ बंद करके गुनगुनाओ — म्म्म"
+      },
+      "words": [
+        {
+          "id": "map",
+          "en": "map",
+          "hi": "नक्शा",
+          "emoji": "🗺️",
+          "sentence": {
+            "en": "The map shows the way."
+          }
+        },
+        {
+          "id": "moon",
+          "en": "moon",
+          "hi": "चाँद",
+          "emoji": "🌙",
+          "sentence": {
+            "en": "The moon is bright."
+          }
+        },
+        {
+          "id": "mouse",
+          "en": "mouse",
+          "hi": "चूहा",
+          "emoji": "🐭",
+          "sentence": {
+            "en": "The mouse is small."
+          }
+        }
+      ]
+    },
+    {
+      "letter": "D",
+      "order": 13,
+      "glyph": {
+        "upper": "D",
+        "lower": "d"
+      },
+      "name": {
+        "en": "dee",
+        "hi": "डी"
+      },
+      "phoneme": {
+        "ipa": "/d/",
+        "say": {
+          "en": "d-d-d",
+          "hi": "ड्-ड्-ड्"
+        }
+      },
+      "articulation": {
+        "en": "Tap your tongue and use your voice — d-d-d",
+        "hi": "जीभ लगाकर आवाज़ के साथ बोलो — ड्"
+      },
+      "words": [
+        {
+          "id": "dog",
+          "en": "dog",
+          "hi": "कुत्ता",
+          "emoji": "🐶",
+          "sentence": {
+            "en": "The dog wags its tail."
+          }
+        },
+        {
+          "id": "duck",
+          "en": "duck",
+          "hi": "बत्तख",
+          "emoji": "🦆",
+          "sentence": {
+            "en": "The duck swims."
+          }
+        },
+        {
+          "id": "doll",
+          "en": "doll",
+          "hi": "गुड़िया",
+          "emoji": "🪆",
+          "sentence": {
+            "en": "I hug my doll."
+          }
+        }
+      ]
+    },
+    {
+      "letter": "G",
+      "order": 14,
+      "glyph": {
+        "upper": "G",
+        "lower": "g"
+      },
+      "name": {
+        "en": "jee",
+        "hi": "जी"
+      },
+      "phoneme": {
+        "ipa": "/ɡ/",
+        "say": {
+          "en": "g-g-g",
+          "hi": "ग्-ग्-ग्"
+        }
+      },
+      "articulation": {
+        "en": "Like C but with your voice on — g-g-g",
+        "hi": "क् जैसी, पर आवाज़ के साथ — ग्"
+      },
+      "words": [
+        {
+          "id": "goat",
+          "en": "goat",
+          "hi": "बकरी",
+          "emoji": "🐐",
+          "sentence": {
+            "en": "The goat climbs the hill."
+          }
+        },
+        {
+          "id": "girl",
+          "en": "girl",
+          "hi": "लड़की",
+          "emoji": "👧",
+          "sentence": {
+            "en": "The girl is running."
+          }
+        },
+        {
+          "id": "guitar",
+          "en": "guitar",
+          "hi": "गिटार",
+          "emoji": "🎸",
+          "sentence": {
+            "en": "I play the guitar."
+          }
+        }
+      ]
+    },
+    {
+      "letter": "O",
+      "order": 15,
+      "glyph": {
+        "upper": "O",
+        "lower": "o"
+      },
+      "name": {
+        "en": "oh",
+        "hi": "ओ"
+      },
+      "phoneme": {
+        "ipa": "/ɒ/",
+        "say": {
+          "en": "ohh",
+          "hi": "ऑ"
+        }
+      },
+      "articulation": {
+        "en": "Make your mouth a round O — ohh",
+        "hi": "मुँह गोल करके बोलो — ऑ"
+      },
+      "words": [
+        {
+          "id": "octopus",
+          "en": "octopus",
+          "hi": "ऑक्टोपस",
+          "emoji": "🐙",
+          "sentence": {
+            "en": "The octopus has eight arms."
+          }
+        },
+        {
+          "id": "otter",
+          "en": "otter",
+          "hi": "ऊदबिलाव",
+          "emoji": "🦦",
+          "sentence": {
+            "en": "The otter floats on its back."
+          }
+        },
+        {
+          "id": "ox",
+          "en": "ox",
+          "hi": "बैल",
+          "emoji": "🐂",
+          "sentence": {
+            "en": "The ox is strong."
+          }
+        }
+      ]
+    },
+    {
+      "letter": "U",
+      "order": 16,
+      "glyph": {
+        "upper": "U",
+        "lower": "u"
+      },
+      "name": {
+        "en": "you",
+        "hi": "यू"
+      },
+      "phoneme": {
+        "ipa": "/ʌ/",
+        "say": {
+          "en": "uhh",
+          "hi": "अ"
+        }
+      },
+      "articulation": {
+        "en": "A short sound from your throat — uhh",
+        "hi": "छोटी सी आवाज़ — अ"
+      },
+      "words": [
+        {
+          "id": "up",
+          "en": "up",
+          "hi": "ऊपर",
+          "emoji": "⬆️",
+          "sentence": {
+            "en": "The balloon goes up."
+          }
+        },
+        {
+          "id": "under",
+          "en": "under",
+          "hi": "नीचे",
+          "emoji": "⬇️",
+          "sentence": {
+            "en": "The cat is under the bed."
+          }
+        },
+        {
+          "id": "umbrella",
+          "en": "umbrella",
+          "hi": "छाता",
+          "emoji": "☂️",
+          "sentence": {
+            "en": "The umbrella keeps me dry."
+          }
+        }
+      ]
+    },
+    {
+      "letter": "L",
+      "order": 17,
+      "glyph": {
+        "upper": "L",
+        "lower": "l"
+      },
+      "name": {
+        "en": "el",
+        "hi": "एल"
+      },
+      "phoneme": {
+        "ipa": "/l/",
+        "say": {
+          "en": "lll",
+          "hi": "ल्ल्ल"
+        }
+      },
+      "articulation": {
+        "en": "Tongue up behind your teeth — lll",
+        "hi": "जीभ ऊपर लगाकर बोलो — ल्ल्ल"
+      },
+      "words": [
+        {
+          "id": "leg",
+          "en": "leg",
+          "hi": "टाँग",
+          "emoji": "🦵",
+          "sentence": {
+            "en": "I stand on one leg."
+          }
+        },
+        {
+          "id": "lion",
+          "en": "lion",
+          "hi": "शेर",
+          "emoji": "🦁",
+          "sentence": {
+            "en": "The lion roars."
+          }
+        },
+        {
+          "id": "leaf",
+          "en": "leaf",
+          "hi": "पत्ता",
+          "emoji": "🍃",
+          "sentence": {
+            "en": "The leaf is green."
+          }
+        }
+      ]
+    },
+    {
+      "letter": "F",
+      "order": 18,
+      "glyph": {
+        "upper": "F",
+        "lower": "f"
+      },
+      "name": {
+        "en": "ef",
+        "hi": "एफ़"
+      },
+      "phoneme": {
+        "ipa": "/f/",
+        "say": {
+          "en": "fff",
+          "hi": "फ़्फ़्फ़्"
+        }
+      },
+      "articulation": {
+        "en": "Top teeth on your lip and blow — fff",
+        "hi": "दाँत होंठ पर रखकर फूँको — फ़्फ़्फ़्"
+      },
+      "words": [
+        {
+          "id": "fish",
+          "en": "fish",
+          "hi": "मछली",
+          "emoji": "🐟",
+          "sentence": {
+            "en": "The fish swims fast."
+          }
+        },
+        {
+          "id": "fan",
+          "en": "fan",
+          "hi": "पंखा",
+          "emoji": "🪭",
+          "sentence": {
+            "en": "The fan keeps me cool."
+          }
+        },
+        {
+          "id": "fox",
+          "en": "fox",
+          "hi": "लोमड़ी",
+          "emoji": "🦊",
+          "sentence": {
+            "en": "The fox has a bushy tail."
+          }
+        }
+      ]
+    },
+    {
+      "letter": "B",
+      "order": 19,
+      "glyph": {
+        "upper": "B",
+        "lower": "b"
+      },
+      "name": {
+        "en": "bee",
+        "hi": "बी"
+      },
+      "phoneme": {
+        "ipa": "/b/",
+        "say": {
+          "en": "b-b-b",
+          "hi": "ब्-ब्-ब्"
+        }
+      },
+      "articulation": {
+        "en": "Lips together, then pop with your voice — b-b-b",
+        "hi": "होंठ दबाकर आवाज़ के साथ छोड़ो — ब्"
+      },
+      "words": [
+        {
+          "id": "ball",
+          "en": "ball",
+          "hi": "गेंद",
+          "emoji": "⚽",
+          "sentence": {
+            "en": "The ball rolls away."
+          }
+        },
+        {
+          "id": "bed",
+          "en": "bed",
+          "hi": "बिस्तर",
+          "emoji": "🛏️",
+          "sentence": {
+            "en": "I sleep in my bed."
+          }
+        },
+        {
+          "id": "bus",
+          "en": "bus",
+          "hi": "बस",
+          "emoji": "🚌",
+          "sentence": {
+            "en": "The bus is yellow."
+          }
+        }
+      ]
+    },
+    {
+      "letter": "J",
+      "order": 20,
+      "glyph": {
+        "upper": "J",
+        "lower": "j"
+      },
+      "name": {
+        "en": "jay",
+        "hi": "जे"
+      },
+      "phoneme": {
+        "ipa": "/dʒ/",
+        "say": {
+          "en": "j-j-j",
+          "hi": "ज्-ज्-ज्"
+        }
+      },
+      "articulation": {
+        "en": "A short bouncy sound — j-j-j",
+        "hi": "छोटी उछलती आवाज़ — ज्"
+      },
+      "words": [
+        {
+          "id": "jam",
+          "en": "jam",
+          "hi": "जैम",
+          "emoji": "🍯",
+          "sentence": {
+            "en": "I like jam on toast."
+          }
+        },
+        {
+          "id": "jug",
+          "en": "jug",
+          "hi": "जग",
+          "emoji": "🫗",
+          "sentence": {
+            "en": "The jug holds water."
+          }
+        },
+        {
+          "id": "jet",
+          "en": "jet",
+          "hi": "जेट",
+          "emoji": "✈️",
+          "sentence": {
+            "en": "The jet flies fast."
+          }
+        }
+      ]
+    },
+    {
+      "letter": "Z",
+      "order": 21,
+      "glyph": {
+        "upper": "Z",
+        "lower": "z"
+      },
+      "name": {
+        "en": "zee",
+        "hi": "ज़ेड"
+      },
+      "phoneme": {
+        "ipa": "/z/",
+        "say": {
+          "en": "zzz",
+          "hi": "ज़्ज़्ज़्"
+        }
+      },
+      "articulation": {
+        "en": "Buzz like a bee — zzz",
+        "hi": "मधुमक्खी जैसी भिनभिनाहट — ज़्ज़्ज़्"
+      },
+      "words": [
+        {
+          "id": "zebra",
+          "en": "zebra",
+          "hi": "ज़ेबरा",
+          "emoji": "🦓",
+          "sentence": {
+            "en": "The zebra has stripes."
+          }
+        },
+        {
+          "id": "zip",
+          "en": "zip",
+          "hi": "ज़िप",
+          "emoji": "🤐",
+          "sentence": {
+            "en": "I zip my coat."
+          }
+        },
+        {
+          "id": "zoo",
+          "en": "zoo",
+          "hi": "चिड़ियाघर",
+          "emoji": "🎪",
+          "sentence": {
+            "en": "We saw lions at the zoo."
+          }
+        }
+      ]
+    },
+    {
+      "letter": "W",
+      "order": 22,
+      "glyph": {
+        "upper": "W",
+        "lower": "w"
+      },
+      "name": {
+        "en": "double-u",
+        "hi": "डब्ल्यू"
+      },
+      "phoneme": {
+        "ipa": "/w/",
+        "say": {
+          "en": "w-w-w",
+          "hi": "व्-व्-व्"
+        }
+      },
+      "articulation": {
+        "en": "Round your lips and blow — w-w-w",
+        "hi": "होंठ गोल करके बोलो — व्"
+      },
+      "words": [
+        {
+          "id": "web",
+          "en": "web",
+          "hi": "जाला",
+          "emoji": "🕸️",
+          "sentence": {
+            "en": "A spider made the web."
+          }
+        },
+        {
+          "id": "wig",
+          "en": "wig",
+          "hi": "विग",
+          "emoji": "💇",
+          "sentence": {
+            "en": "The clown wears a wig."
+          }
+        },
+        {
+          "id": "wall",
+          "en": "wall",
+          "hi": "दीवार",
+          "emoji": "🧱",
+          "sentence": {
+            "en": "The wall is tall."
+          }
+        }
+      ]
+    },
+    {
+      "letter": "V",
+      "order": 23,
+      "glyph": {
+        "upper": "V",
+        "lower": "v"
+      },
+      "name": {
+        "en": "vee",
+        "hi": "वी"
+      },
+      "phoneme": {
+        "ipa": "/v/",
+        "say": {
+          "en": "vvv",
+          "hi": "व़्व़्व़्"
+        }
+      },
+      "articulation": {
+        "en": "Like F, but switch your voice on — vvv",
+        "hi": "फ़ जैसी, पर आवाज़ के साथ — व़्व़्व़्"
+      },
+      "words": [
+        {
+          "id": "van",
+          "en": "van",
+          "hi": "वैन",
+          "emoji": "🚐",
+          "sentence": {
+            "en": "The van is big."
+          }
+        },
+        {
+          "id": "vet",
+          "en": "vet",
+          "hi": "पशु चिकित्सक",
+          "emoji": "👩‍⚕️",
+          "sentence": {
+            "en": "The vet helps animals."
+          }
+        },
+        {
+          "id": "violin",
+          "en": "violin",
+          "hi": "वायलिन",
+          "emoji": "🎻",
+          "sentence": {
+            "en": "The violin sounds sweet."
+          }
+        }
+      ]
+    },
+    {
+      "letter": "Y",
+      "order": 24,
+      "glyph": {
+        "upper": "Y",
+        "lower": "y"
+      },
+      "name": {
+        "en": "wy",
+        "hi": "वाई"
+      },
+      "phoneme": {
+        "ipa": "/j/",
+        "say": {
+          "en": "y-y-y",
+          "hi": "य्-य्-य्"
+        }
+      },
+      "articulation": {
+        "en": "A quick sound — y-y-y",
+        "hi": "झटपट आवाज़ — य्"
+      },
+      "words": [
+        {
+          "id": "yak",
+          "en": "yak",
+          "hi": "याक",
+          "emoji": "🐃",
+          "sentence": {
+            "en": "The yak has long hair."
+          }
+        },
+        {
+          "id": "yoyo",
+          "en": "yo-yo",
+          "hi": "यो-यो",
+          "emoji": "🪀",
+          "sentence": {
+            "en": "The yo-yo goes up and down."
+          }
+        },
+        {
+          "id": "yarn",
+          "en": "yarn",
+          "hi": "ऊन",
+          "emoji": "🧶",
+          "sentence": {
+            "en": "The yarn is soft."
+          }
+        }
+      ]
+    },
+    {
+      "letter": "X",
+      "order": 25,
+      "glyph": {
+        "upper": "X",
+        "lower": "x"
+      },
+      "name": {
+        "en": "ex",
+        "hi": "एक्स"
+      },
+      "phoneme": {
+        "ipa": "/ks/",
+        "say": {
+          "en": "ks",
+          "hi": "क्स्"
+        }
+      },
+      "articulation": {
+        "en": "X hides at the END of words — ks, ks",
+        "hi": "X शब्द के अंत में छुपता है — क्स्"
+      },
+      "words": [
+        {
+          "id": "box",
+          "en": "box",
+          "hi": "डिब्बा",
+          "emoji": "📦",
+          "sentence": {
+            "en": "The toy is in the box."
+          }
+        },
+        {
+          "id": "six",
+          "en": "six",
+          "hi": "छह",
+          "emoji": "6️⃣",
+          "sentence": {
+            "en": "I can count to six."
+          }
+        },
+        {
+          "id": "fox",
+          "en": "fox",
+          "hi": "लोमड़ी",
+          "emoji": "🦊",
+          "sentence": {
+            "en": "The fox runs to the box."
+          }
+        }
+      ]
+    },
+    {
+      "letter": "Q",
+      "order": 26,
+      "glyph": {
+        "upper": "Q",
+        "lower": "q"
+      },
+      "name": {
+        "en": "cue",
+        "hi": "क्यू"
+      },
+      "phoneme": {
+        "ipa": "/kw/",
+        "say": {
+          "en": "kw",
+          "hi": "क्व्"
+        }
+      },
+      "articulation": {
+        "en": "Q brings U everywhere — together they say kw",
+        "hi": "Q हमेशा U को साथ लाता है — क्व्"
+      },
+      "words": [
+        {
+          "id": "queen",
+          "en": "queen",
+          "hi": "रानी",
+          "emoji": "👑",
+          "sentence": {
+            "en": "The queen wears a crown."
+          }
+        },
+        {
+          "id": "quilt",
+          "en": "quilt",
+          "hi": "रजाई",
+          "emoji": "🧵",
+          "sentence": {
+            "en": "The quilt is warm."
+          }
+        },
+        {
+          "id": "quill",
+          "en": "quill",
+          "hi": "पंख",
+          "emoji": "🪶",
+          "sentence": {
+            "en": "She writes with a quill."
+          }
+        }
+      ]
+    }
+  ]
+}

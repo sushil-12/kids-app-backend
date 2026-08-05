@@ -8,6 +8,16 @@ vi.mock('../src/db/content.repo', () => ({
   upsertAbcLesson: vi.fn(),
 }));
 
+// Mock RAG retrieval so the generators' grounding path is deterministic in
+// these existing tests: retrieve returns [] → buildGroundedPrompt falls back
+// to the un-grounded prompt. The grounded path is covered separately in
+// content.service.grounded.test.ts.
+vi.mock('../src/services/rag.service', () => ({
+  RagService: vi.fn().mockImplementation(() => ({
+    retrieve: vi.fn().mockResolvedValue([]),
+  })),
+}));
+
 // Mock OpenAI
 vi.mock('openai', () => {
   const mockCreate = vi.fn();
@@ -102,7 +112,7 @@ describe('ContentService', () => {
           title: 'The Magic Tree',
           moral: 'Together we can protect what we love.',
           emoji: '🌳',
-          source: 'openai',
+          source: 'openai-grounded',
           date: '2026-06-19',
         })
       );
@@ -152,7 +162,7 @@ describe('ContentService', () => {
           topic: 'Animals',
           title: 'The Dancing Butterfly',
           emoji: '🦋',
-          source: 'openai',
+          source: 'openai-grounded',
         })
       );
       expect(result).toBe(fakePoem);
@@ -203,7 +213,7 @@ describe('ContentService', () => {
           letter: 'B',
           word: 'Butterfly',
           emoji: '🦋',
-          source: 'openai',
+          source: 'openai-grounded',
         })
       );
       expect(result).toBe(fakeLesson);

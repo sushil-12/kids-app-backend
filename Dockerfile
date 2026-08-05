@@ -14,6 +14,11 @@ COPY src ./src/
 
 RUN npm run build
 
+# The content portal is its own package with its own toolchain, built here so
+# the server image ships the static bundle and never needs React at runtime.
+COPY admin ./admin/
+RUN npm --prefix admin ci && npm --prefix admin run build && rm -rf admin/node_modules
+
 # ---------- Runner ----------
 FROM node:20-slim AS runner
 
@@ -27,6 +32,7 @@ RUN groupadd -g 1001 nodejs && \
 COPY --from=builder --chown=brightmind:nodejs /app/dist ./dist
 COPY --from=builder --chown=brightmind:nodejs /app/node_modules ./node_modules
 COPY --from=builder --chown=brightmind:nodejs /app/prisma ./prisma
+COPY --from=builder --chown=brightmind:nodejs /app/admin/dist ./admin/dist
 COPY --chown=brightmind:nodejs package*.json ./
 
 USER brightmind

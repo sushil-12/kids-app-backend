@@ -1,6 +1,11 @@
 services:
   postgres:
-    image: postgres:16-alpine
+    # pgvector image = official postgres + the `vector` extension preinstalled.
+    # Same PG major (16) as the plain postgres:16-alpine image, so an existing
+    # postgres_data volume keeps working. The extension still has to be enabled
+    # per-DB with `CREATE EXTENSION IF NOT EXISTS vector` — the Prisma migration
+    # does that automatically (prisma/migrations/20260628120000_add_rag_chunks).
+    image: pgvector/pgvector:pg16
     environment:
       POSTGRES_USER: brightmind
       POSTGRES_PASSWORD: brightmind_pass
@@ -41,6 +46,25 @@ services:
       PORT: 3000
       NODE_ENV: production
       DAILY_OPENAI_CALL_LIMIT: ${DAILY_OPENAI_CALL_LIMIT:-50}
+      # Baked into the narration-clip URLs stored inside content packs, so this
+      # must be an origin the APP can reach — not localhost — once deployed.
+      PUBLIC_BASE_URL: ${PUBLIC_BASE_URL:-http://localhost:3000}
+      # Recorded story narration. Optional: without a key packs simply play with
+      # the app's on-device TTS instead.
+      ELEVENLABS_API_KEY: ${ELEVENLABS_API_KEY:-}
+      ELEVEN_VOICE_EN: ${ELEVEN_VOICE_EN:-21m00Tcm4TlvDq8ikWAM}
+      ELEVEN_VOICE_HI: ${ELEVEN_VOICE_HI:-21m00Tcm4TlvDq8ikWAM}
+      ELEVENLABS_DAILY_CHAR_LIMIT: ${ELEVENLABS_DAILY_CHAR_LIMIT:-20000}
+      # Media storage. All three of bucket + both keys are needed to turn S3 on;
+      # without them narration falls back to Postgres and artwork stays
+      # paste-a-URL only, so the stack still boots.
+      S3_BUCKET: ${S3_BUCKET:-}
+      S3_REGION: ${S3_REGION:-ap-southeast-2}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:-}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:-}
+      S3_PUBLIC_BASE_URL: ${S3_PUBLIC_BASE_URL:-}
+      S3_KEY_PREFIX: ${S3_KEY_PREFIX:-brightmind}
+      MEDIA_MAX_UPLOAD_MB: ${MEDIA_MAX_UPLOAD_MB:-15}
       LOG_LEVEL: ${LOG_LEVEL:-info}
     depends_on:
       postgres:

@@ -34,6 +34,7 @@ COPY --from=builder --chown=brightmind:nodejs /app/node_modules ./node_modules
 COPY --from=builder --chown=brightmind:nodejs /app/prisma ./prisma
 COPY --from=builder --chown=brightmind:nodejs /app/admin/dist ./admin/dist
 COPY --chown=brightmind:nodejs package*.json ./
+RUN chmod -R 755 /app/node_modules/@prisma /app/node_modules/.prisma 2>/dev/null || true
 
 USER brightmind
 
